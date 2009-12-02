@@ -1,0 +1,21 @@
+<% title "Audio File Styles" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Desc</th>
+    <th>Metric</th>
+  </tr>
+  <% for audio_file_style in @audio_file_styles %>
+    <tr>
+      <td><%=h audio_file_style.name %></td>
+      <td><%=h audio_file_style.desc %></td>
+      <td><%=h audio_file_style.metric %></td>
+      <td><%= link_to "Show", audio_file_style %></td>
+      <td><%= link_to "Edit", edit_audio_file_style_path(audio_file_style) %></td>
+      <td><%= link_to "Destroy", audio_file_style, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Audio File Style", new_audio_file_style_path %></p>

@@ -1,0 +1,20 @@
+<% title "Audio File Style" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @audio_file_style.name %>
+</p>
+<p>
+  <strong>Desc:</strong>
+  <%=h @audio_file_style.desc %>
+</p>
+<p>
+  <strong>Metric:</strong>
+  <%=h @audio_file_style.metric %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_audio_file_style_path(@audio_file_style) %> |
+  <%= link_to "Destroy", @audio_file_style, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", audio_file_styles_path %>
+</p>

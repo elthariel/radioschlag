@@ -1,0 +1,9 @@
+one:
+  name: MyString
+  desc: MyText
+  metric: 1.5
+
+two:
+  name: MyString
+  desc: MyText
+  metric: 1.5
