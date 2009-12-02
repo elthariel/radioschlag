@@ -1,0 +1,134 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (37.6ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (20.9ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAudioFileTypes (20091202150807)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "audio_file_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "desc" text, "metric" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091202150807')[0m
+Migrating to CreateAudioFileStyles (20091202150852)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TABLE "audio_file_styles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "desc" text, "metric" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091202150852')[0m
+Migrating to CreateAudioFiles (20091202151722)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TABLE "audio_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "path" varchar(255), "audio_file_style_id" integer, "audio_file_type_id" integer, "duration" integer, "metric" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091202151722')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("audio_file_styles")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("audio_file_types")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("audio_files")[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-02 16:34:43) [GET]
+
+ActionController::RoutingError (No route matches "/users" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-02 16:35:02) [GET]
+
+ActionController::RoutingError (No route matches "/audio_file_types" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-02 16:35:04) [GET]
+
+ActionController::RoutingError (No route matches "/audio_file_type" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing AudioFileStylesController#index (for 127.0.0.1 at 2009-12-02 16:35:29) [GET]
+  [4;36;1mAudioFileStyle Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_styles" [0m
+Rendering template within layouts/application
+Rendering audio_file_styles/index
+Completed in 37ms (View: 31, DB: 1) | 200 OK [http://localhost/audio_file_styles]
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileType Create (0.4ms)[0m   [0mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('track', '2009-12-02 15:45:18', '2009-12-02 15:45:18', 1.0, NULL)[0m
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileType Create (0.3ms)[0m   [0mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('jingle', '2009-12-02 15:45:18', '2009-12-02 15:45:18', 1.0, NULL)[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'live') LIMIT 1[0m
+  [4;35;1mAudioFileType Create (0.7ms)[0m   [0mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('live', '2009-12-02 15:45:18', '2009-12-02 15:45:18', 1.0, NULL)[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'mix') LIMIT 1[0m
+  [4;35;1mAudioFileType Create (0.7ms)[0m   [0mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('mix', '2009-12-02 15:45:18', '2009-12-02 15:45:18', 1.0, NULL)[0m
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'program') LIMIT 1[0m
+  [4;35;1mAudioFileType Create (0.4ms)[0m   [0mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('program', '2009-12-02 15:45:18', '2009-12-02 15:45:18', 1.0, NULL)[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'nostyle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Create (0.7ms)[0m   [0mINSERT INTO "audio_file_styles" ("name", "created_at", "updated_at", "metric", "desc") VALUES('nostyle', '2009-12-02 15:45:18', '2009-12-02 15:45:18', 0.0, NULL)[0m
+
+
+Processing AudioFileStylesController#index (for 127.0.0.1 at 2009-12-02 16:45:41) [GET]
+  [4;36;1mAudioFileStyle Load (0.9ms)[0m   [0;1mSELECT * FROM "audio_file_styles" [0m
+Rendering template within layouts/application
+Rendering audio_file_styles/index
+Completed in 57ms (View: 42, DB: 1) | 200 OK [http://localhost/audio_file_styles]
+
+
+Processing AudioFileStylesController#show (for 127.0.0.1 at 2009-12-02 16:45:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering audio_file_styles/show
+Completed in 19ms (View: 10, DB: 0) | 200 OK [http://localhost/audio_file_styles/1]
+
+
+Processing AudioFileStylesController#edit (for 127.0.0.1 at 2009-12-02 16:45:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering audio_file_styles/edit
+Rendered audio_file_styles/_form (6.6ms)
+Completed in 28ms (View: 20, DB: 0) | 200 OK [http://localhost/audio_file_styles/1/edit]
+
+
+Processing AudioFileStylesController#index (for 127.0.0.1 at 2009-12-02 16:49:27) [GET]
+  [4;35;1mAudioFileStyle Load (0.7ms)[0m   [0mSELECT * FROM "audio_file_styles" [0m
+Rendering template within layouts/application
+Rendering audio_file_styles/index
+Completed in 89ms (View: 8, DB: 1) | 200 OK [http://localhost/audio_file_styles]
