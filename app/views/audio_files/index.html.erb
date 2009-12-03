@@ -1,25 +1,24 @@
-<% title "Audio Files" %>
+<% title "Fichiers sons" %>
 
 <table>
   <tr>
-    <th>Path</th>
-    <th>Audio File Style</th>
-    <th>Audio File Type</th>
-    <th>Duration</th>
+    <th>Fichier</th>
+    <th>Type</th>
+    <th>Style</th>
+    <th>Duree(s)</th>
     <th>Metric</th>
   </tr>
   <% for audio_file in @audio_files %>
     <tr>
       <td><%=h audio_file.path %></td>
-      <td><%=h audio_file.audio_file_style_id %></td>
-      <td><%=h audio_file.audio_file_type_id %></td>
+      <td><%=h audio_file.audio_file_type.name %></td>
+      <td><%=h audio_file.audio_file_style.name %></td>
       <td><%=h audio_file.duration %></td>
       <td><%=h audio_file.metric %></td>
-      <td><%= link_to "Show", audio_file %></td>
-      <td><%= link_to "Edit", edit_audio_file_path(audio_file) %></td>
-      <td><%= link_to "Destroy", audio_file, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Voir", audio_file %></td>
+      <td><%= link_to "Edition", edit_audio_file_path(audio_file) %></td>
+      <td><%= link_to "Supprimer", audio_file, :confirm => 'Etes vous surs de vouloir supprimer ce fichier ?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Audio File", new_audio_file_path %></p>

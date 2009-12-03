@@ -1,6 +1,11 @@
 development:
   domain: localhost:3000
   audio_root: /home/opp2/code/new_radio/data
+  sox: /usr/bin/sox
+  sox_nice: 19
+  sox_format: --channels 2 --type vorbis -C 4
+  sox_fx: gain -1 highpass 28 0.001q rate -v -a 44100 dither -s
+  sox_fx_low: delay 0 0.005 reverb wet-gain -25
 
 test:
   domain: test.host
