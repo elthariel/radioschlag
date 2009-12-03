@@ -1,0 +1,19 @@
+<% title "Fichiers en attente de conversion" %>
+
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Type</th>
+    <th>Style</th>
+  </tr>
+  <% for incoming_audio_file in @incoming_audio_files %>
+    <tr>
+      <td><%=h incoming_audio_file.path %></td>
+      <td><%=h incoming_audio_file.audio_file_type.name %></td>
+      <td><%=h incoming_audio_file.audio_file_style.name %></td>
+      <td><%= link_to "Supprimer", incoming_audio_file, :confirm => 'Cela va supprimer le fichier ?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<!--<p><%= link_to "New Incoming Audio File", new_incoming_audio_file_path %></p> -->

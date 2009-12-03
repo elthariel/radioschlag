@@ -1,6 +1,7 @@
 class AudioFileStyle < ActiveRecord::Base
   attr_accessible :name, :desc, :metric
   has_many :audio_file
+  has_many :incoming_audio_file
 
   validates_uniqueness_of :name
   validates_presence_of :name

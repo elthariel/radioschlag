@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :incoming_audio_files
+
+  map.resources :incoming_audio_files
+
   map.resources :audio_files
 
   map.resources :audio_file_styles

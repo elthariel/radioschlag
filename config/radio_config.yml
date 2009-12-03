@@ -1,0 +1,10 @@
+development:
+  domain: localhost:3000
+  audio_root: /home/opp2/code/new_radio/data
+
+test:
+  domain: test.host
+  audio_root: /home/opp2/code/new_radio/data
+
+production:
+  domain: example.com

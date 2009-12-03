@@ -1,0 +1,9 @@
+one:
+  path: MyString
+  audio_file_type_id: 1
+  audio_file_style_id: 1
+
+two:
+  path: MyString
+  audio_file_type_id: 1
+  audio_file_style_id: 1

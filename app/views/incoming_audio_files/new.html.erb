@@ -1,0 +1,21 @@
+<% title "New Incoming Audio File" %>
+
+<% form_for @incoming_audio_file do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :path %><br />
+    <%= f.text_field :path %>
+  </p>
+  <p>
+    <%= f.label :audio_file_type_id %><br />
+    <%= f.text_field :audio_file_type_id %>
+  </p>
+  <p>
+    <%= f.label :audio_file_style_id %><br />
+    <%= f.text_field :audio_file_style_id %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
+
+
+<p><%= link_to "Back to List", incoming_audio_files_path %></p>

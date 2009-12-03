@@ -132,3 +132,1085 @@ Processing AudioFileStylesController#index (for 127.0.0.1 at 2009-12-02 16:49:27
 Rendering template within layouts/application
 Rendering audio_file_styles/index
 Completed in 89ms (View: 8, DB: 1) | 200 OK [http://localhost/audio_file_styles]
+  [4;36;1mAudioFileType Load (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: audio_file_types: SELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (21.6ms)[0m   [0;1mCREATE TABLE "audio_file_styles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "desc" text, "metric" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (8.8ms)[0m   [0;1mCREATE TABLE "audio_file_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "desc" text, "metric" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (11.4ms)[0m   [0;1mCREATE TABLE "audio_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "path" varchar(255), "audio_file_style_id" integer, "audio_file_type_id" integer, "duration" integer, "metric" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (45.9ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (44.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (8.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20091202151722')[0m
+  [4;35;1mSQL (13.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091202150807')[0m
+  [4;36;1mSQL (15.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20091202150852')[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.4ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('track', '2009-12-03 12:29:51', '2009-12-03 12:29:51', 1.0, NULL)[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.4ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('jingle', '2009-12-03 12:29:51', '2009-12-03 12:29:51', 1.0, NULL)[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'live') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.4ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('live', '2009-12-03 12:29:51', '2009-12-03 12:29:51', 1.0, NULL)[0m
+  [4;35;1mAudioFileType Load (0.2ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'mix') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.4ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('mix', '2009-12-03 12:29:51', '2009-12-03 12:29:51', 1.0, NULL)[0m
+  [4;35;1mAudioFileType Load (0.2ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'program') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.4ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('program', '2009-12-03 12:29:51', '2009-12-03 12:29:51', 1.0, NULL)[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'nostyle') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Create (0.4ms)[0m   [0;1mINSERT INTO "audio_file_styles" ("name", "created_at", "updated_at", "metric", "desc") VALUES('nostyle', '2009-12-03 12:29:51', '2009-12-03 12:29:51', 0.0, NULL)[0m
+  [4;36;1mAudioFileType Load (2.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'tracks') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (2.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (18.2ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.0ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mSQL (43.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAudioFileTypes (20091202150807)
+Migrating to CreateAudioFileStyles (20091202150852)
+Migrating to CreateAudioFiles (20091202151722)
+Migrating to CreateIncomingAudioFiles (20091203124429)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCREATE TABLE "incoming_audio_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "path" varchar(255), "audio_file_type_id" integer, "audio_file_style_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091203124429')[0m
+  [4;35;1mSQL (2.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("audio_file_styles")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("audio_file_types")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("audio_files")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("incoming_audio_files")[0m
+  [4;36;1mAudioFileType Load (2.6ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (1.8ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (1.9ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAudioFileTypes (20091202150807)
+Migrating to CreateAudioFileStyles (20091202150852)
+Migrating to CreateAudioFiles (20091202151722)
+Migrating to CreateIncomingAudioFiles (20091203124429)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("audio_file_styles")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("audio_file_types")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("audio_files")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("incoming_audio_files")[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (38.8ms)[0m   [0;1mDROP TABLE "audio_file_styles"[0m
+  [4;35;1mSQL (19.1ms)[0m   [0mCREATE TABLE "audio_file_styles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "desc" text, "metric" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (6.0ms)[0m   [0mDROP TABLE "audio_file_types"[0m
+  [4;36;1mSQL (14.9ms)[0m   [0;1mCREATE TABLE "audio_file_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "desc" text, "metric" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (34.9ms)[0m   [0;1mDROP TABLE "audio_files"[0m
+  [4;35;1mSQL (10.8ms)[0m   [0mCREATE TABLE "audio_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "path" varchar(255), "audio_file_style_id" integer, "audio_file_type_id" integer, "duration" integer, "metric" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (60.3ms)[0m   [0mDROP TABLE "incoming_audio_files"[0m
+  [4;36;1mSQL (53.8ms)[0m   [0;1mCREATE TABLE "incoming_audio_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "path" varchar(255), "audio_file_type_id" integer, "audio_file_style_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.5ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('track', '2009-12-03 12:57:02', '2009-12-03 12:57:02', 1.0, NULL)[0m
+  [4;35;1mAudioFileType Load (0.2ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.4ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('jingle', '2009-12-03 12:57:02', '2009-12-03 12:57:02', 1.0, NULL)[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'live') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.4ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('live', '2009-12-03 12:57:02', '2009-12-03 12:57:02', 1.0, NULL)[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'mix') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.6ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('mix', '2009-12-03 12:57:02', '2009-12-03 12:57:02', 1.0, NULL)[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'program') LIMIT 1[0m
+  [4;36;1mAudioFileType Create (0.6ms)[0m   [0;1mINSERT INTO "audio_file_types" ("name", "created_at", "updated_at", "metric", "desc") VALUES('program', '2009-12-03 12:57:02', '2009-12-03 12:57:02', 1.0, NULL)[0m
+  [4;35;1mAudioFileStyle Load (0.2ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'nostyle') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Create (0.4ms)[0m   [0;1mINSERT INTO "audio_file_styles" ("name", "created_at", "updated_at", "metric", "desc") VALUES('nostyle', '2009-12-03 12:57:02', '2009-12-03 12:57:02', 0.0, NULL)[0m
+  [4;36;1mAudioFileType Load (1.6ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (1.9ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (2.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (1.8ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (2.5ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (2.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.4ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.8ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.2ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Create (0.6ms)[0m   [0mINSERT INTO "audio_file_styles" ("name", "created_at", "updated_at", "metric", "desc") VALUES('xp-acid', '2009-12-03 13:09:01', '2009-12-03 13:09:01', NULL, NULL)[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.8ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.4ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.5ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.2ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Create (0.5ms)[0m   [0mINSERT INTO "audio_file_styles" ("name", "created_at", "updated_at", "metric", "desc") VALUES('hardcore-frenchcore', '2009-12-03 13:09:01', '2009-12-03 13:09:01', NULL, NULL)[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.7ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.2ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (18.7ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Create (0.4ms)[0m   [0mINSERT INTO "audio_file_styles" ("name", "created_at", "updated_at", "metric", "desc") VALUES('hardtek', '2009-12-03 13:09:01', '2009-12-03 13:09:01', NULL, NULL)[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.5ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (1.1ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (10.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Create (0.3ms)[0m   [0mINSERT INTO "audio_file_styles" ("name", "created_at", "updated_at", "metric", "desc") VALUES('default', '2009-12-03 13:09:01', '2009-12-03 13:09:01', NULL, NULL)[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.8ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (14.7ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (1.8ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.6ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.7ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.8ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.8ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.7ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (8.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.7ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (22.2ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.5ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.9ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (1.0ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.7ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (15.7ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.9ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.4ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.5ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (20.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.9ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (18.7ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.5ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (1.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.4ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (19.2ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.7ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.5ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.2ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.7ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.5ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (1.1ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (1.1ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (7.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (1.2ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (23.0ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-03 14:10:10) [GET]
+
+ActionController::RoutingError (No route matches "/audiofiles" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-03 14:10:15) [GET]
+
+ActionController::RoutingError (No route matches "/audiofile" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-03 14:10:18) [GET]
+
+ActionController::RoutingError (No route matches "/audio_file" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:10:26) [GET]
+  [4;36;1mIncomingAudioFile Load (2.0ms)[0m   [0;1mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 100ms (View: 65, DB: 2) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:10:29) [GET]
+  [4;35;1mIncomingAudioFile Load (0.6ms)[0m   [0mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 22ms (View: 2, DB: 1) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing AudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:10:36) [GET]
+  [4;36;1mAudioFile Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_files" [0m
+Rendering template within layouts/application
+Rendering audio_files/index
+Completed in 50ms (View: 26, DB: 0) | 200 OK [http://localhost/audio_files]
+  [4;36;1mAudioFileType Load (2.0ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.6ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.7ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (8.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.5ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.3ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.3ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.7ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.3ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.6ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.8ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.8ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (10.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.3ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.5ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.1ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.8ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (15.8ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:12:27) [GET]
+  [4;35;1mIncomingAudioFile Load (1.3ms)[0m   [0mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 17ms (View: 4, DB: 1) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#new (for 127.0.0.1 at 2009-12-03 14:12:29) [GET]
+Rendering template within layouts/application
+Rendering incoming_audio_files/new
+Completed in 67ms (View: 41, DB: 0) | 200 OK [http://localhost/incoming_audio_files/new]
+  [4;36;1mAudioFileType Load (1.8ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (13.9ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.9ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 2, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3', 1)[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.4ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 2, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3', 1)[0m
+  [4;36;1mAudioFileType Load (1.6ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.5ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.4ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 2, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3', 1)[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'xp-acid') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (4.5ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.8ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 2, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3', 1)[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (9.4ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 3, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3', 1)[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.9ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.6ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 3, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3', 1)[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.1ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 3, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3', 1)[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.9ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 3, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3', 1)[0m
+  [4;36;1mAudioFileType Load (0.1ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.2ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (19.0ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 4, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3', 1)[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardtek') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.5ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.4ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 4, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3', 1)[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.6ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 5, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg', 2)[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.6ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 5, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg', 2)[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.3ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'default') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.5ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:14:08', 5, '2009-12-03 13:14:08', '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg', 2)[0m
+  [4;36;1mAudioFileType Load (1.9ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (1.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.3ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.7ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.2ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.7ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.4ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.5ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.7ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.5ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.3ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.9ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/default/jingle-styles.ogg') LIMIT 1[0m
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:14:31) [GET]
+  [4;36;1mIncomingAudioFile Load (3.6ms)[0m   [0;1mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 90ms (View: 71, DB: 4) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#destroy (for 127.0.0.1 at 2009-12-03 14:15:01) [DELETE]
+  Parameters: {"authenticity_token"=>"DkNLhHzZVBE6IgXDUuyz0jl+nvEsQkXWUnVVslv5Sus=", "id"=>"13"}
+  [4;35;1mIncomingAudioFile Load (0.6ms)[0m   [0mSELECT * FROM "incoming_audio_files" WHERE ("incoming_audio_files"."id" = 13) [0m
+  [4;36;1mIncomingAudioFile Destroy (1.0ms)[0m   [0;1mDELETE FROM "incoming_audio_files" WHERE "id" = 13[0m
+Redirected to http://localhost:3000/incoming_audio_files
+Completed in 49ms (DB: 2) | 302 Found [http://localhost/incoming_audio_files/13]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:15:01) [GET]
+  [4;35;1mIncomingAudioFile Load (2.1ms)[0m   [0mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 147ms (View: 127, DB: 2) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#destroy (for 127.0.0.1 at 2009-12-03 14:15:04) [DELETE]
+  Parameters: {"authenticity_token"=>"DkNLhHzZVBE6IgXDUuyz0jl+nvEsQkXWUnVVslv5Sus=", "id"=>"12"}
+  [4;36;1mIncomingAudioFile Load (0.5ms)[0m   [0;1mSELECT * FROM "incoming_audio_files" WHERE ("incoming_audio_files"."id" = 12) [0m
+  [4;35;1mIncomingAudioFile Destroy (0.6ms)[0m   [0mDELETE FROM "incoming_audio_files" WHERE "id" = 12[0m
+Redirected to http://localhost:3000/incoming_audio_files
+Completed in 55ms (DB: 1) | 302 Found [http://localhost/incoming_audio_files/12]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:15:04) [GET]
+  [4;36;1mIncomingAudioFile Load (2.1ms)[0m   [0;1mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 73ms (View: 55, DB: 2) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#destroy (for 127.0.0.1 at 2009-12-03 14:15:06) [DELETE]
+  Parameters: {"authenticity_token"=>"DkNLhHzZVBE6IgXDUuyz0jl+nvEsQkXWUnVVslv5Sus=", "id"=>"11"}
+  [4;35;1mIncomingAudioFile Load (0.7ms)[0m   [0mSELECT * FROM "incoming_audio_files" WHERE ("incoming_audio_files"."id" = 11) [0m
+  [4;36;1mIncomingAudioFile Destroy (0.4ms)[0m   [0;1mDELETE FROM "incoming_audio_files" WHERE "id" = 11[0m
+Redirected to http://localhost:3000/incoming_audio_files
+Completed in 87ms (DB: 1) | 302 Found [http://localhost/incoming_audio_files/11]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:15:06) [GET]
+  [4;35;1mIncomingAudioFile Load (2.2ms)[0m   [0mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 225ms (View: 202, DB: 2) | 200 OK [http://localhost/incoming_audio_files]
+  [4;36;1mAudioFileType Load (2.8ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.7ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.5ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.8ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.3ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.5ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.5ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.4ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.5ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.6ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.3ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.2ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'nostyle') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'nostyle') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (1.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.9ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:15:37', 1, '2009-12-03 13:15:37', '/home/opp2/code/new_radio/data/jingle/nostyle/jingle_radio_schlag.ogg', 2)[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'nostyle') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'nostyle') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (0.5ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:15:37', 1, '2009-12-03 13:15:37', '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-kipuedesorteils.ogg', 2)[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-styles.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-styles.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'nostyle') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'nostyle') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.6ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-styles.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Create (3.3ms)[0m   [0mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:15:37', 1, '2009-12-03 13:15:37', '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-styles.ogg', 2)[0m
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:15:43) [GET]
+  [4;36;1mIncomingAudioFile Load (2.5ms)[0m   [0;1mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 95ms (View: 67, DB: 3) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#destroy (for 127.0.0.1 at 2009-12-03 14:15:54) [DELETE]
+  Parameters: {"authenticity_token"=>"DkNLhHzZVBE6IgXDUuyz0jl+nvEsQkXWUnVVslv5Sus=", "id"=>"6"}
+  [4;35;1mIncomingAudioFile Load (1.1ms)[0m   [0mSELECT * FROM "incoming_audio_files" WHERE ("incoming_audio_files"."id" = 6) [0m
+  [4;36;1mIncomingAudioFile Destroy (0.3ms)[0m   [0;1mDELETE FROM "incoming_audio_files" WHERE "id" = 6[0m
+Redirected to http://localhost:3000/incoming_audio_files
+Completed in 64ms (DB: 1) | 302 Found [http://localhost/incoming_audio_files/6]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:15:54) [GET]
+  [4;35;1mIncomingAudioFile Load (2.1ms)[0m   [0mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 191ms (View: 161, DB: 2) | 200 OK [http://localhost/incoming_audio_files]
+  [4;36;1mAudioFileType Load (2.0ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.5ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/02-inshizzo-acid_to_east-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.3ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/05-inshizzo-chtototam-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.2ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.4ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/03-inshizzo-stravinsky_is_alive-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/xp-acid/04-inshizzo-brain_creator-gmp3.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.7ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b1_the_speed_freak_and_stormtrooper_-_worst_case_scenario.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (2.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.4ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.2ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT "audio_file_styles".id FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFileStyle Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."name" = 'hardcore-frenchcore') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Create (0.8ms)[0m   [0;1mINSERT INTO "incoming_audio_files" ("created_at", "audio_file_style_id", "updated_at", "path", "audio_file_type_id") VALUES('2009-12-03 13:16:02', 3, '2009-12-03 13:16:02', '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a1_the_speed_freak_and_stormtrooper_-_nukem_now_(noiserave_version).mp3', 1)[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/b2_the_speed_freak_and_stormtrooper_-_die_earthscum.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (15.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardcore-frenchcore/a2_the_speed_freak_and_stormtrooper_-_controlling_pathetic_humans.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.3ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/B1_Jt Labo14 - Adjax.mp3') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'track') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.3ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.3ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/track/hardtek/A_Jt Labo 14 - Butox.mp3') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.4ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.3ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle_radio_schlag.ogg') LIMIT 1[0m
+  [4;36;1mAudioFileType Load (0.7ms)[0m   [0;1mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;35;1mAudioFile Load (0.2ms)[0m   [0mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;36;1mIncomingAudioFile Load (0.4ms)[0m   [0;1mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-kipuedesorteils.ogg') LIMIT 1[0m
+  [4;35;1mAudioFileType Load (0.3ms)[0m   [0mSELECT "audio_file_types".id FROM "audio_file_types" WHERE ("audio_file_types"."name" = 'jingle') LIMIT 1[0m
+  [4;36;1mAudioFile Load (0.2ms)[0m   [0;1mSELECT "audio_files".id FROM "audio_files" WHERE ("audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-styles.ogg') LIMIT 1[0m
+  [4;35;1mIncomingAudioFile Load (0.4ms)[0m   [0mSELECT "incoming_audio_files".id FROM "incoming_audio_files" WHERE ("incoming_audio_files"."path" = '/home/opp2/code/new_radio/data/jingle/nostyle/jingle-styles.ogg') LIMIT 1[0m
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:16:08) [GET]
+  [4;36;1mIncomingAudioFile Load (2.3ms)[0m   [0;1mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+Completed in 85ms (View: 59, DB: 2) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:20:21) [GET]
+  [4;35;1mIncomingAudioFile Load (2.2ms)[0m   [0mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+Completed in 194ms (View: 175, DB: 3) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:20:33) [GET]
+  [4;35;1mIncomingAudioFile Load (2.1ms)[0m   [0mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+  [4;36;1mAudioFileType Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileStyle Load (0.7ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileStyle Load (1.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;36;1mAudioFileType Load (0.3ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+Completed in 140ms (View: 124, DB: 6) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:21:37) [GET]
+  [4;36;1mIncomingAudioFile Load (18.8ms)[0m   [0;1mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mAudioFileStyle Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mAudioFileStyle Load (0.5ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mAudioFileStyle Load (0.7ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;35;1mAudioFileType Load (0.7ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;36;1mAudioFileStyle Load (1.1ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+Completed in 225ms (View: 193, DB: 23) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:22:41) [GET]
+  [4;35;1mIncomingAudioFile Load (2.4ms)[0m   [0mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+  [4;36;1mAudioFileType Load (2.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileStyle Load (0.6ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+Completed in 146ms (View: 112, DB: 7) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:23:04) [GET]
+  [4;36;1mIncomingAudioFile Load (1.8ms)[0m   [0;1mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+  [4;35;1mAudioFileType Load (0.8ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mAudioFileStyle Load (1.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mAudioFileStyle Load (1.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mAudioFileStyle Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;35;1mAudioFileType Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;36;1mAudioFileStyle Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+Completed in 146ms (View: 119, DB: 6) | 200 OK [http://localhost/incoming_audio_files]
+
+
+Processing IncomingAudioFilesController#index (for 127.0.0.1 at 2009-12-03 14:23:34) [GET]
+  [4;35;1mIncomingAudioFile Load (1.5ms)[0m   [0mSELECT * FROM "incoming_audio_files" [0m
+Rendering template within layouts/application
+Rendering incoming_audio_files/index
+  [4;36;1mAudioFileType Load (0.6ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileStyle Load (0.4ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 4) [0m
+  [4;36;1mAudioFileType Load (0.4ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mAudioFileStyle Load (0.5ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "audio_file_types" WHERE ("audio_file_types"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "audio_file_styles" WHERE ("audio_file_styles"."id" = 3) [0m
+Completed in 249ms (View: 204, DB: 4) | 200 OK [http://localhost/incoming_audio_files]
