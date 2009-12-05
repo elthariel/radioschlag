@@ -40,7 +40,8 @@ def _add_file_to_db(type, style, path)
 
   type_id = AudioFileType.find_by_name(type).id
   style_id = AudioFileStyle.find_by_name(style).id
+  owner_id = User.find_by_username(RADIO_CONFIG[:root]).id
 
   p "Adding a file to incoming audio files: #{type}:#{style}:#{path}"
-  IncomingAudioFile.create(:path => path, :audio_file_style_id => style_id, :audio_file_type_id => type_id)
+  IncomingAudioFile.create(:path => path, :audio_file_style_id => style_id, :audio_file_type_id => type_id, :user_id => owner_id)
 end

@@ -1,6 +1,10 @@
 <% form_for @audio_file do |f| %>
   <%= f.error_messages %>
   <p>
+    <%= f.label h "Utilisateur proprietaire du fichier" %><br />
+    <%= collection_select(:audio_file, :user_id, User.all, :id, :username) %>
+  </p>
+  <p>
     <%= f.label :audio_file_type_id %><br />
     <%= collection_select(:audio_file, :audio_file_type_id, AudioFileType.all, :id, :name) %>
   </p>

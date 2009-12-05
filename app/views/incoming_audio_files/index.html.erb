@@ -2,12 +2,14 @@
 
 <table>
   <tr>
+    <th>Utilisateur</th>
     <th>Nom</th>
     <th>Type</th>
     <th>Style</th>
   </tr>
   <% for incoming_audio_file in @incoming_audio_files %>
     <tr>
+      <td><%=h incoming_audio_file.user.username%></td>
       <td><%=h incoming_audio_file.path %></td>
       <td><%=h incoming_audio_file.audio_file_type.name %></td>
       <td><%=h incoming_audio_file.audio_file_style.name %></td>

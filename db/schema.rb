@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091203180230) do
+ActiveRecord::Schema.define(:version => 20091205002703) do
 
   create_table "audio_file_styles", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20091203180230) do
     t.float    "metric"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "incoming_audio_files", :force => true do |t|
@@ -43,6 +44,17 @@ ActiveRecord::Schema.define(:version => 20091203180230) do
     t.integer  "audio_file_style_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "role_assignments", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string "name"
+    t.text   "desc"
   end
 
   create_table "users", :force => true do |t|

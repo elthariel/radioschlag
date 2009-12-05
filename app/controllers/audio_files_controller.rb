@@ -1,10 +1,8 @@
 class AudioFilesController < ApplicationController
+  filter_resource_access
+
   def index
     @audio_files = AudioFile.all
-  end
-
-  def show
-    @audio_file = AudioFile.find(params[:id])
   end
 
   def edit

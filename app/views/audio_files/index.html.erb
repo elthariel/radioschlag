@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Utilisateur</th>
     <th>Fichier</th>
     <th>Type</th>
     <th>Style</th>
@@ -10,12 +11,12 @@
   </tr>
   <% for audio_file in @audio_files %>
     <tr>
+      <td><%=h audio_file.user.username %></td>
       <td><%=h audio_file.path %></td>
       <td><%=h audio_file.audio_file_type.name %></td>
       <td><%=h audio_file.audio_file_style.name %></td>
       <td><%=h audio_file.duration %></td>
       <td><%=h audio_file.metric %></td>
-      <td><%= link_to "Voir", audio_file %></td>
       <td><%= link_to "Edition", edit_audio_file_path(audio_file) %></td>
       <td><%= link_to "Supprimer", audio_file, :confirm => 'Etes vous surs de vouloir supprimer ce fichier ?', :method => :delete %></td>
     </tr>

@@ -1,0 +1,31 @@
+#
+# TODO file for radio schlag
+#
+
+Besoins sur le model :
+
+- Fichiers
+  - Une version simple de cette table sers a gerer les fichiers recemment uploaded, en attente de conversion
+  - Fichiers ont un proprietaire, par defaut, cet user est l'admin
+  - Fichiers ont un style, un type et une metric de lecture
+
+- Utilisateurs
+  - Un nom/pass/mail/etc
+  - Un role (root, admin, modo, contributeur, normal?)
+    - Root, tout les droits,? including system stuff
+    - Admin tout les droits ?
+    - Moderateur, supprimer certains contenus
+    - Contributeur, a un compte ftp et peut uploader
+      -> Quota
+    - Normal aucun droit particulier, genre juste comment
+  - root > admin > modo > contrib > normal ?
+
+- Programmation
+  - Plage horaire
+  - Plusieurs contributeur
+  - Plusieurs type de plages
+    - Playlist
+    - Random ameliore avec criteres de types/styles
+
+
+

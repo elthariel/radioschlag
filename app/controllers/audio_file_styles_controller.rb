@@ -1,16 +1,18 @@
 class AudioFileStylesController < ApplicationController
+  filter_resource_access
+
   def index
     @audio_file_styles = AudioFileStyle.all
   end
-  
+
   def show
     @audio_file_style = AudioFileStyle.find(params[:id])
   end
-  
+
   def new
     @audio_file_style = AudioFileStyle.new
   end
-  
+
   def create
     @audio_file_style = AudioFileStyle.new(params[:audio_file_style])
     if @audio_file_style.save
@@ -20,11 +22,11 @@ class AudioFileStylesController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
     @audio_file_style = AudioFileStyle.find(params[:id])
   end
-  
+
   def update
     @audio_file_style = AudioFileStyle.find(params[:id])
     if @audio_file_style.update_attributes(params[:audio_file_style])
@@ -34,7 +36,7 @@ class AudioFileStylesController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @audio_file_style = AudioFileStyle.find(params[:id])
     @audio_file_style.destroy
