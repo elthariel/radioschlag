@@ -1,1 +1,4 @@
 Radio Schlag radio managements scripts. Wip
+
+Don't forget to change the shebang on top of incoming, pure-auth,
+pure-upload script in script directory (or to fix that issue.)

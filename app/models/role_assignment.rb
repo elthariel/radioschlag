@@ -6,3 +6,4 @@ class RoleAssignment < ActiveRecord::Base
 
   validates_presence_of :user_id, :role_id
 end
+

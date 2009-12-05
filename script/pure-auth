@@ -1,0 +1,38 @@
+#! /home/opp2/code/new_radio/runner
+## incomingd.rb
+## Login : <opp2@opp2-devsrv>
+## Started on  Thu Dec  3 14:26:37 2009 opp2
+## $Id$
+##
+## Author(s):
+##  - opp2 <>
+##
+## Copyright (C) 2009 opp2
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program; if not, write to the Free Software
+## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+##
+
+u = User.find_by_username(ENV['AUTHD_ACCOUNT'])
+
+if u.valid_password?(ENV['AUTHD_PASSWORD']) and u.ftp_account_id != 0
+  p 'auth_ok:1'
+  p "uid:#{RADIO_CONFIG[:ftp_id]}"
+  p "gid:#{RADIO_CONFIG[:ftp_gid]}"
+  p "dir:#{RADIO_CONFIG[:ftp_root]}/#{u.username}/./"
+  p "user_quota_size:#{u.ftp_account.quota}"
+  p "per_user_max:#{u.ftp_account.sessions}"
+else
+  p 'auth_ok:0'
+end
+

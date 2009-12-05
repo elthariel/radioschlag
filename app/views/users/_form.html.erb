@@ -25,7 +25,27 @@
     <%= f.text_area :profile %>
   </p>
 
-  <% #permitted_to? :manage, :role_assignments do %>
+  <% if permitted_to? :manage, :ftp_accounts %>
+  <p>
+    <% if @user.ftp_account_id == 0 %>
+      Creer le compte ftp ? <%= check_box_tag 'ftp[create]' 'true' %>
+    <% else %>
+      <% f.fields_for :ftp_account do |ftp_fields| %>
+      Ftp: Quota:  <%= ftp_fields.text_field :quota %>
+      Ftp: Sessions:  <%= ftp_fields.text_field :sessions %>
+      <% end %>
+    <% end %>
+  </p>
+  <% else %>
+    <% if @user.ftp_account_id != 0 %>
+    <p>
+      Compte FTP: <%= @user.ftp_account.quota / (1024 * 1024) %> Mb,
+      <%= @user.ftp_account.sessions %> sessions concurrentes autorisees %>
+    </p>
+    <% end %>
+  <% end %>
+
+  <% permitted_to? :manage, :role_assignments do %>
     <% for role in Role.all %>
       <div>
         <%= check_box_tag "user[role_ids][]", role.id,
@@ -33,6 +53,6 @@
         <%= role.name %> :: <%= role.desc %>
       </div>
     <% end %>
-  <% #end %>
+  <% end %>
   <p><%= f.submit "Submit" %></p>
 <% end %>

@@ -23,11 +23,26 @@ class UsersController < ApplicationController
   def update
     params[:user][:role_ids] ||= []
     @user = current_user
+    if params[:ftp] && params[:ftp][:create]
+      create_ftp_account
+    end
     if @user.update_attributes(params[:user])
       flash[:notice] = "Profil mis a jour"
       redirect_to root_url
     else
       render :action => 'edit'
     end
+  end
+
+  protected
+
+  def create_ftp_account
+    path = "#{RADIO_CONFIG[:ftp_root]}/#{@user.username}"
+    `mkdir "#{path}"`
+    ftp = FtpAccount.create(:user_id => @user.id,
+                            :quota => RADIO_CONFIG[:ftp_default_quota],
+                            :sessions => RADIO_CONFIG[:ftp_sessions])
+    @user.ftp_account_id = ftp.id
+    @user.save
   end
 end

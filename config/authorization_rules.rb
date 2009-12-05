@@ -34,13 +34,17 @@ authorization do
     includes :moderateur
 
     has_permission_on :users, :to => :manage
+    has_permission_on :ftp_accounts, :to => :manage
   end
 
   role :moderateur do
     includes :contributeur
 
     has_permission_on :incoming_audio_files, :to => [:destroy]
-    has_permission_on :audio_files, :to => [:destroy]
+    has_permission_on :audio_files, :to => :destroy
+    has_permission_on :ftp_accounts, :to => :read do
+      if_attribute :user => is {user}
+    end
   end
 
   role :contributeur do
