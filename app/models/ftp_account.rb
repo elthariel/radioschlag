@@ -1,3 +1,8 @@
 class FtpAccount < ActiveRecord::Base
-  attr_accessible :user_id, :quota, :sessions
+  using_access_control
+
+  belongs_to :user
+
+  validates_presence_of :user_id, :quota, :sessions
+
 end
