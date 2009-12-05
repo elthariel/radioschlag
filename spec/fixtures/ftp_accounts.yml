@@ -1,0 +1,9 @@
+one:
+  user_id: 1
+  quota: 1
+  sessions: 1
+
+two:
+  user_id: 1
+  quota: 1
+  sessions: 1
