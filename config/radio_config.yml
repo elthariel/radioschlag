@@ -1,6 +1,6 @@
 development:
   domain: localhost:3000
-  root: elthariel
+  root: root
   audio_root: /home/opp2/code/new_radio/data
   sox: /usr/bin/sox
   sox_nice: 19

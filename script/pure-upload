@@ -25,8 +25,50 @@
 
 if ARGV.length != 1
   p "Script called with wrong arguments"
-  exit (0)
+  exit(0)
 end
 
-p ARGV[0]
+path = File.expand_path(ARGV[0])
+
+# Discard if the script is not a file
+if !File.readable?(path)
+  p "#{path} is either not a file or not readble"
+  exit(0)
+end
+
+ftp_path = RADIO_CONFIG[:ftp_root]
+root_path = RADIO_CONFIG[:audio_root]
+
+if path[0, ftp_path.length] == ftp_path
+
+  # Audio Files defaults to undefined type and nostyle
+  type_id = AudioFileType.find_by_name('undefined').id
+  style_id = AudioFileStyle.find_by_name('nostyle').id
+
+  # Determining the owner of the file
+  relative_path = path[ftp_path.length + 1, path.length]
+  infos = relative_path.split('/')
+  user_id = User.find_by_name(infos[0]).id
+
+elsif path[0, root_path.length] == root_path
+
+  # Use hierarchy convention root/type/style to determine style
+  relative_path = path[root_path.length + 1, path.length]
+  infos = relative_path.split('/')
+  user_id = User.find_by_username(RADIO_CONFIG[:root]).id
+  type_id = AudioFileType.find_by_name(infos[0]).id
+
+  # Checking if the style exists, if not creating it.
+  AudioFileStyle.create(:name => infos[1], :metric => 1.0) unless AudioFileStyle.exists?(:name => infos[1])
+  style_id = AudioFileStyle.find_by_name(infos[1]).id
+
+else
+  # Not a radio upload
+  exit(0)
+end
+
+p "Creating incoming audio file #{type_id}:#{style_id}:#{user_id}"
+IncomingAudioFile.create(:path => path, :user_id => user_id,
+                         :audio_file_type_id => type_id,
+                         :audio_file_style_id => style_id)
 

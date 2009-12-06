@@ -7,7 +7,8 @@
 #   Major.create(:name => 'Daley', :city => cities.first)
 
 # Creating default audio file types
-AudioFileType.create([{:name => 'track', :metric => 1.0},
+AudioFileType.create([{:name => 'undefined', :metric => 0.0},
+                      {:name => 'track', :metric => 1.0},
                       {:name => 'jingle', :metric => 1.0},
                       {:name => 'live', :metric => 1.0},
                       {:name => 'mix', :metric => 1.0},
@@ -16,7 +17,10 @@ AudioFileType.create([{:name => 'track', :metric => 1.0},
 AudioFileStyle.create({:name => 'nostyle', :metric => 0.0})
 
 Role.create([{:name => 'root', :desc => 'Super Power User de la mort'},
-             {:name => 'Administrateur', :desc => 'Administrateur, tout les droits sauf ceux qui concernent le systeme'},
-             {:name => 'Moderateur', :desc => 'Moderateur, suppression/edition du contenu'},
-             {:name => 'Contribeur', :desc => 'Peut avoir un compte ftp, liste les fichiers, peut gerer des plages horaires'}])
+             {:name => 'administrateur', :desc => 'Administrateur, tout les droits sauf ceux qui concernent le systeme'},
+             {:name => 'moderateur', :desc => 'Moderateur, suppression/edition du contenu'},
+             {:name => 'contribeur', :desc => 'Peut avoir un compte ftp, liste les fichiers, peut gerer des plages horaires'}])
 
+u = User.create(:username => 'root', :email => 'test@test.com',
+                :password => 'hackme', :password_confirmation => 'hackme')
+`echo "insert into role_assignments (user_id, role_id) values ('1', '1');" | sqlite3 db/development.sqlite3`
