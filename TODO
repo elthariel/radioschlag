@@ -5,20 +5,24 @@
 Besoins sur le model :
 
 - Fichiers
-  - Une version simple de cette table sers a gerer les fichiers recemment uploaded, en attente de conversion
-  - Fichiers ont un proprietaire, par defaut, cet user est l'admin
-  - Fichiers ont un style, un type et une metric de lecture
+  - X Une version simple de cette table sers a gerer les fichiers recemment uploaded, en attente de conversion -> IncomingAudioFile
+  - X Fichiers ont un proprietaire, par defaut, cet user est l'admin
+  - X Fichiers ont un style, un type et une metric de lecture
 
 - Utilisateurs
-  - Un nom/pass/mail/etc
-  - Un role (root, admin, modo, contributeur, normal?)
-    - Root, tout les droits,? including system stuff
-    - Admin tout les droits ?
-    - Moderateur, supprimer certains contenus
-    - Contributeur, a un compte ftp et peut uploader
-      -> Quota
+  - X Un nom/pass/mail/etc
+  - X Un role (root, admin, modo, contributeur, normal?)
+    - X Root, tout les droits,? including system stuff
+    - X Admin tout les droits ?
+    - X Moderateur, supprimer certains contenus
+    - X Contributeur, a un compte ftp et peut uploader
+      -> X Quota
     - Normal aucun droit particulier, genre juste comment
-  - root > admin > modo > contrib > normal ?
+  - X root > admin > modo > contrib > normal ?
+
+- X PureFtpd integration
+  - X Script de login (pure-auth)
+  - X Script d'upload (pute-upload)
 
 - Programmation
   - Plage horaire

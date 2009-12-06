@@ -28,13 +28,13 @@ authorization do
     includes :administrateur
 
     has_permission_on :role_assignments, :to => :manage
+    has_permission_on :ftp_accounts, :to => :manage
   end
 
   role :administrateur do
     includes :moderateur
 
     has_permission_on :users, :to => :manage
-    has_permission_on :ftp_accounts, :to => :manage
   end
 
   role :moderateur do
@@ -51,19 +51,18 @@ authorization do
     includes :guest
 
     # Fichier audios
-    has_permission_on :audio_files, :to => [:destroy] do
+    has_permission_on :audio_files, :to => :manage do
       if_attribute :user => is {user}
     end
 
     # Fichiers audios en conversion
-    has_permission_on :incoming_audio_files, :to => [:index]
-    has_permission_on :incoming_audio_files, :to => [:destroy] do
+    has_permission_on :incoming_audio_files, :to => :read
+    has_permission_on :incoming_audio_files, :to => :delete do
       if_attribute :user => is {user}
     end
 
     # Les contributeurs gerent les styles
-    has_permission_on :audio_file_styles, :to => [:index, :show, :new, :create,
-                                                  :edit, :update, :destroy]
+    has_permission_on :audio_file_styles, :to => :manage
   end
 
   role :guest do
