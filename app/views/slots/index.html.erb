@@ -1,0 +1,25 @@
+<% title "Slots" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Desc</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Program</th>
+  </tr>
+  <% for slot in @slots %>
+    <tr>
+      <td><%=h slot.name %></td>
+      <td><%=h slot.desc %></td>
+      <td><%=h slot.start %></td>
+      <td><%=h slot.end %></td>
+      <td><%=h slot.program_id %></td>
+      <td><%= link_to "Show", slot %></td>
+      <td><%= link_to "Edit", edit_slot_path(slot) %></td>
+      <td><%= link_to "Destroy", slot, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Slot", new_slot_path %></p>

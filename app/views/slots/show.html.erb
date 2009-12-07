@@ -1,0 +1,28 @@
+<% title "Slot" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @slot.name %>
+</p>
+<p>
+  <strong>Desc:</strong>
+  <%=h @slot.desc %>
+</p>
+<p>
+  <strong>Start:</strong>
+  <%=h @slot.start %>
+</p>
+<p>
+  <strong>End:</strong>
+  <%=h @slot.end %>
+</p>
+<p>
+  <strong>Program:</strong>
+  <%=h @slot.program_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_slot_path(@slot) %> |
+  <%= link_to "Destroy", @slot, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", slots_path %>
+</p>
