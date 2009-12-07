@@ -1,3 +1,5 @@
 class Slot < ActiveRecord::Base
-  attr_accessible :name, :desc, :start, :end, :program_id
+  has_one :program
+
+  validates_presence_of :name, :start, :end, :program_id
 end

@@ -1,0 +1,28 @@
+<% title "Playlist" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @playlist.name %>
+</p>
+<p>
+  <strong>Desc:</strong>
+  <%=h @playlist.desc %>
+</p>
+<p>
+  <strong>Playlist Type:</strong>
+  <%=h @playlist.playlist_type_id %>
+</p>
+<p>
+  <strong>Playlist Player:</strong>
+  <%=h @playlist.playlist_player_id %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%=h @playlist.content %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_playlist_path(@playlist) %> |
+  <%= link_to "Destroy", @playlist, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", playlists_path %>
+</p>

@@ -1,0 +1,24 @@
+<% form_for @playlist do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :desc %><br />
+    <%= f.text_area :desc %>
+  </p>
+  <p>
+    <%= f.label :playlist_type_id %><br />
+    <%= f.text_field :playlist_type_id %>
+  </p>
+  <p>
+    <%= f.label :playlist_player_id %><br />
+    <%= f.text_field :playlist_player_id %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

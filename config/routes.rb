@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :playlists
+
   map.resources :programs
 
   map.resources :slots

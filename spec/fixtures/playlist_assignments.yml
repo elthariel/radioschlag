@@ -1,0 +1,11 @@
+one:
+  program_id: 1
+  playlist_id: 1
+  priority: 1
+  probability: 1
+
+two:
+  program_id: 1
+  playlist_id: 1
+  priority: 1
+  probability: 1

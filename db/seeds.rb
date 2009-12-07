@@ -24,3 +24,8 @@ Role.create([{:name => 'root', :desc => 'Super Power User de la mort'},
 u = User.create(:username => 'root', :email => 'test@test.com',
                 :password => 'hackme', :password_confirmation => 'hackme')
 `echo "insert into role_assignments (user_id, role_id) values ('1', '1');" | sqlite3 db/development.sqlite3`
+
+PlaylistPlayer.create([{:name => 'random', :desc => 'Super random heuristique'},
+                       {:name => 'order', :desc => 'Joue la playlist dans l\'ordre'}])
+PlaylistType.create([{:name => 'audiofile', :desc => 'playlist de fichiers'},
+                     {:name => 'typestyle', :desc => 'la playlist est specifiee par le type et les styles de fichiers'}])

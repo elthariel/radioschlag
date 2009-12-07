@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  desc: MyText
+  playlist_type_id: 1
+  playlist_player_id: 1
+  content: MyText
+
+two:
+  name: MyString
+  desc: MyText
+  playlist_type_id: 1
+  playlist_player_id: 1
+  content: MyText

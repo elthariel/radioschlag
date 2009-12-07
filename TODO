@@ -32,5 +32,17 @@ Besoins sur le model :
     - Random ameliore avec criteres de types/styles
   - 'Daemon' qui feed un liquidsoap unix socket de request pour genere la programmation
 
+- Gestion de la programmation
+  - Des plages horaires associees a un programme.
+  - Seuls root & admin ont les droits pour toucher aux plages horaires et a l'association du programme
+  - Un programme = differentes playlists, avec un ratio de lecture (genre %)
+  - 2 types de playlist
+    - Specifier directement les audiofiles
+      - 2 facon de jouer les playlists
+        - Random ameliore
+        - Joue dans l'ordre
+    - Specifier par types/style
+      - Joue en random ameliore de la mort
+
 
 
