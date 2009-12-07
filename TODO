@@ -30,6 +30,7 @@ Besoins sur le model :
   - Plusieurs type de plages
     - Playlist
     - Random ameliore avec criteres de types/styles
+  - 'Daemon' qui feed un liquidsoap unix socket de request pour genere la programmation
 
 
 
