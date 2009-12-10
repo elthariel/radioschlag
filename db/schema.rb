@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091205024701) do
+ActiveRecord::Schema.define(:version => 20091207141919) do
 
   create_table "audio_file_styles", :force => true do |t|
     t.string   "name"
@@ -53,6 +53,40 @@ ActiveRecord::Schema.define(:version => 20091205024701) do
     t.integer  "user_id"
   end
 
+  create_table "playlist_assignments", :id => false, :force => true do |t|
+    t.integer "program_id"
+    t.integer "playlist_id"
+    t.integer "priority"
+    t.integer "probability"
+  end
+
+  create_table "playlist_players", :force => true do |t|
+    t.string "name"
+    t.text   "desc"
+  end
+
+  create_table "playlist_types", :force => true do |t|
+    t.string "name"
+    t.text   "desc"
+  end
+
+  create_table "playlists", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.integer  "playlist_type_id"
+    t.integer  "playlist_player_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "programs", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "role_assignments", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "role_id"
@@ -61,6 +95,17 @@ ActiveRecord::Schema.define(:version => 20091205024701) do
   create_table "roles", :force => true do |t|
     t.string "name"
     t.text   "desc"
+  end
+
+  create_table "slots", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.integer  "start"
+    t.integer  "end"
+    t.integer  "program_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "allow_live", :default => false
   end
 
   create_table "users", :force => true do |t|

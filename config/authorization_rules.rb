@@ -35,6 +35,8 @@ authorization do
     includes :moderateur
 
     has_permission_on :users, :to => :manage
+    has_permission_on :programs, :to => :manage
+    has_permission_on :slots, :to => :manage
   end
 
   role :moderateur do

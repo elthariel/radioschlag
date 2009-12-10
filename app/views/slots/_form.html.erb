@@ -18,7 +18,12 @@
   </p>
   <p>
     <%= f.label :program_id %><br />
-    <%= f.text_field :program_id %>
+    <%= collection_select(:slot, :program_id, Program.all, :id, :name) %>
   </p>
+  <p>
+    <%= f.label 'Autoriser le direct sur cette plage horaire' %><br />
+    <%= f.check_box :allow_live %>
+  </p>
+
   <p><%= f.submit "Submit" %></p>
 <% end %>

@@ -1,28 +1,28 @@
-<% title "Playlist" %>
+<% title "Playlist : #{@playlist.name}" %>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nom:</strong>
   <%=h @playlist.name %>
 </p>
 <p>
-  <strong>Desc:</strong>
+  <strong>Description:</strong>
   <%=h @playlist.desc %>
 </p>
 <p>
-  <strong>Playlist Type:</strong>
+  <strong>Type de playlist:</strong>
   <%=h @playlist.playlist_type_id %>
 </p>
 <p>
-  <strong>Playlist Player:</strong>
+  <strong>Mode de lecture:</strong>
   <%=h @playlist.playlist_player_id %>
 </p>
 <p>
-  <strong>Content:</strong>
+  <strong>Contenu:</strong>
   <%=h @playlist.content %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_playlist_path(@playlist) %> |
-  <%= link_to "Destroy", @playlist, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", playlists_path %>
+  <%= link_to "Edition", edit_playlist_path(@playlist) %> |
+  <%= link_to "Supprimer", @playlist, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Retour a la liste des playlists", playlists_path %>
 </p>

@@ -10,11 +10,11 @@
   </p>
   <p>
     <%= f.label :playlist_type_id %><br />
-    <%= f.text_field :playlist_type_id %>
+    <%= collection_select(:playlist, :playlist_type_id, PlaylistType.all, :id, :name) %>
   </p>
   <p>
     <%= f.label :playlist_player_id %><br />
-    <%= f.text_field :playlist_player_id %>
+    <%= collection_select(:playlist, :playlist_player_id, PlaylistPlayer.all, :id, :name) %>
   </p>
   <p>
     <%= f.label :content %><br />

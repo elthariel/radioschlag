@@ -1,16 +1,18 @@
 class ProgramsController < ApplicationController
+  filter_resource_access
+
   def index
     @programs = Program.all
   end
-  
+
   def show
     @program = Program.find(params[:id])
   end
-  
+
   def new
     @program = Program.new
   end
-  
+
   def create
     @program = Program.new(params[:program])
     if @program.save
@@ -20,11 +22,11 @@ class ProgramsController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
     @program = Program.find(params[:id])
   end
-  
+
   def update
     @program = Program.find(params[:id])
     if @program.update_attributes(params[:program])
@@ -34,7 +36,7 @@ class ProgramsController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @program = Program.find(params[:id])
     @program.destroy

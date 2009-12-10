@@ -1,25 +1,36 @@
-<% title "Slots" %>
+<% title "Planning" %>
+
+<p>
+  Cette page affiche le planning de programmation de la radio. Les
+  dates de debut et de fin sont comptees en minutes depuis lundi
+  0h00. A chaque plage horaire (slot) est assigne un programme gere
+  par un groupe d'utilisateur de la radio. Certaines plages horaires
+  permettent aux utilisateurs qui gerent le programme assigne a cette
+  plage de faire du live.
+</p>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Desc</th>
-    <th>Start</th>
-    <th>End</th>
-    <th>Program</th>
+    <th>Programme</th>
+    <th>Description</th>
+    <th>Debut</th>
+    <th>Fine</th>
+    <th>Autorise le live</th>
   </tr>
   <% for slot in @slots %>
     <tr>
       <td><%=h slot.name %></td>
-      <td><%=h slot.desc %></td>
+      <td><%=h slot.program.name %></td>
+      <td><%=h slot.program.desc %></td>
       <td><%=h slot.start %></td>
       <td><%=h slot.end %></td>
-      <td><%=h slot.program_id %></td>
-      <td><%= link_to "Show", slot %></td>
-      <td><%= link_to "Edit", edit_slot_path(slot) %></td>
-      <td><%= link_to "Destroy", slot, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%=h slot.allow_live %></td>
+      <td><%= link_to "Voir", slot %></td>
+      <td><%= link_to "Editer", edit_slot_path(slot) %></td>
+      <td><%= link_to "Supprimer", slot, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Slot", new_slot_path %></p>
+<p><%= link_to "Nouvelle plage horaire", new_slot_path %></p>
