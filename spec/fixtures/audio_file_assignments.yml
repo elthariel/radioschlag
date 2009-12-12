@@ -1,0 +1,9 @@
+one:
+  playlist_id: 1
+  audio_file_id: 1
+  position: 1
+
+two:
+  playlist_id: 1
+  audio_file_id: 1
+  position: 1

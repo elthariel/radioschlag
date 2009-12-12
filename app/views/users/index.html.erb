@@ -1,0 +1,21 @@
+<% title "Utilisateurs" %>
+
+<table>
+  <tr>
+    <th>Utilisateur</th>
+    <th>Roles</th>
+    <th>Profile</th>
+  </tr>
+  <% for user in @users %>
+    <tr>
+      <td><%=h user.username %></td>
+      <td>
+        <% for role in user.roles %>
+          <%=h role.name %>
+        <% end %>
+      </td>
+      <td><%= link_to "Edition", edit_user_path(user) %></td>
+    </tr>
+  <% end %>
+</table>
+

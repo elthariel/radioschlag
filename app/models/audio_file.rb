@@ -2,6 +2,9 @@ class AudioFile < ActiveRecord::Base
   belongs_to :audio_file_type
   belongs_to :audio_file_style
   belongs_to :user
+  # Using 'acts as list'
+  has_many :audio_file_assignments
+  has_many :playlists, :through => :audio_file_assignments
 
   validates_presence_of :path, :duration, :user_id
   validates_uniqueness_of :path

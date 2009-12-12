@@ -16,9 +16,5 @@
     <%= f.label :playlist_player_id %><br />
     <%= collection_select(:playlist, :playlist_player_id, PlaylistPlayer.all, :id, :name) %>
   </p>
-  <p>
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </p>
   <p><%= f.submit "Submit" %></p>
 <% end %>

@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes', :cache => 'radio' %>
     <%= yield(:head) %>
   </head>
   <body>
@@ -22,7 +22,8 @@
         <%= link_to 'Queue de conversion', incoming_audio_files_path %> :-:
         <%= link_to 'Planning', slots_path %> :-:
         <%= link_to 'Programmes', programs_path %> :-:
-        <%= link_to 'Playlists', playlists_path %>
+        <%= link_to 'Playlists', playlists_path %> :-:
+        <%= link_to "Utilisateurs", users_path %>
       </div>
 
       <%- flash.each do |name, msg| -%>

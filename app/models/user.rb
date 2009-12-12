@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :audio_file
   has_many :role_assignments
   has_many :roles, :through => :role_assignments
+  has_many :program_assignments
+  has_many :programs, :through => :program_assignments
   has_one :ftp_account
   accepts_nested_attributes_for :ftp_account, :allow_destroy => true
 

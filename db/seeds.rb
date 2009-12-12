@@ -19,7 +19,7 @@ AudioFileStyle.create({:name => 'nostyle', :metric => 0.0})
 Role.create([{:name => 'root', :desc => 'Super Power User de la mort'},
              {:name => 'administrateur', :desc => 'Administrateur, tout les droits sauf ceux qui concernent le systeme'},
              {:name => 'moderateur', :desc => 'Moderateur, suppression/edition du contenu'},
-             {:name => 'contribeur', :desc => 'Peut avoir un compte ftp, liste les fichiers, peut gerer des plages horaires'}])
+             {:name => 'contributeur', :desc => 'Peut avoir un compte ftp, liste les fichiers, peut gerer des plages horaires'}])
 
 u = User.create(:username => 'root', :email => 'test@test.com',
                 :password => 'hackme', :password_confirmation => 'hackme')

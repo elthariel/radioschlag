@@ -6,7 +6,6 @@
     <th>Description</th>
     <th>Type playlist</th>
     <th>Mode de lecture</th>
-    <th>Contenu</th>
   </tr>
   <% for playlist in @playlists %>
     <tr>
@@ -14,7 +13,6 @@
       <td><%=h playlist.desc %></td>
       <td><%=h playlist.playlist_type.name %></td>
       <td><%=h playlist.playlist_player.name %></td>
-      <td><%=h playlist.content %></td>
       <td><%= link_to "Voir", playlist %></td>
       <td><%= link_to "Editer", edit_playlist_path(playlist) %></td>
       <td><%= link_to "Supprimer", playlist, :confirm => 'Are you sure?', :method => :delete %></td>

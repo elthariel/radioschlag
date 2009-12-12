@@ -1,16 +1,18 @@
 class PlaylistsController < ApplicationController
+  filter_resource_access
+
   def index
     @playlists = Playlist.all
   end
-  
+
   def show
     @playlist = Playlist.find(params[:id])
   end
-  
+
   def new
     @playlist = Playlist.new
   end
-  
+
   def create
     @playlist = Playlist.new(params[:playlist])
     if @playlist.save
@@ -20,11 +22,11 @@ class PlaylistsController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
     @playlist = Playlist.find(params[:id])
   end
-  
+
   def update
     @playlist = Playlist.find(params[:id])
     if @playlist.update_attributes(params[:playlist])
@@ -34,11 +36,16 @@ class PlaylistsController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @playlist = Playlist.find(params[:id])
     @playlist.destroy
     flash[:notice] = "Successfully destroyed playlist."
     redirect_to playlists_url
   end
+
+  def add_file
+    @playlist = Playlist.find(params[:id])
+  end
+
 end

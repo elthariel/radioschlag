@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   filter_access_to [:edit, :update], :load_method => :current_user
-  filter_access_to [:new, :create]
+  filter_access_to [:new, :create, :index]
+
+  def index
+    @users = User.find(:all)
+  end
 
   def new
     @user = User.new
@@ -17,12 +21,22 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    if params[:id] == 'current' or !params[:id]
+      @user = current_user
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def update
     params[:user][:role_ids] ||= []
-    @user = current_user
+
+    if params[:id] == 'current'
+      @user = current_user
+    elsif params[:id]
+      @user = User.find(params[:id])
+    end
+
     if params[:ftp] && params[:ftp][:create]
       create_ftp_account
     end

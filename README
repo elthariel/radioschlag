@@ -2,3 +2,15 @@ Radio Schlag radio managements scripts. Wip
 
 Don't forget to change the shebang on top of incoming, pure-auth,
 pure-upload script in script directory (or to fix that issue.)
+
+## Requirements
+
+- Rails
+- liquidsoap
+- pureftpd with custom auth backend and upload script support compiled in
+- RubyGems
+  - AuthLogic
+  - Declarative_authorization
+  - Formtastic
+  - Acts_as_list
+

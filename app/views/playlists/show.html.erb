@@ -10,15 +10,11 @@
 </p>
 <p>
   <strong>Type de playlist:</strong>
-  <%=h @playlist.playlist_type_id %>
+  <%=h @playlist.playlist_type.name %>
 </p>
 <p>
   <strong>Mode de lecture:</strong>
-  <%=h @playlist.playlist_player_id %>
-</p>
-<p>
-  <strong>Contenu:</strong>
-  <%=h @playlist.content %>
+  <%=h @playlist.playlist_player.name %>
 </p>
 
 <p>

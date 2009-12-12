@@ -65,11 +65,16 @@ authorization do
 
     # Les contributeurs gerent les styles
     has_permission_on :audio_file_styles, :to => :manage
+
+    # Les contributeurs peuvent gerer des playlists
+    has_permission_on :playlists, :to => :create
+    has_permission_on :playlists, :to => :manage
   end
 
   role :guest do
     has_permission_on :audio_files, :to => :read
-#    has_permission_on :role_assignment, :to => :read
+    has_permission_on :playlists, :to => :read
+    has_permission_on :role_assignment, :to => :read
     has_permission_on :users, :to => :create
     has_permission_on :users, :to => :update do
       if_attribute :user => is {user}
