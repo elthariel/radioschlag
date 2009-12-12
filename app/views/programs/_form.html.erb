@@ -1,12 +1,8 @@
-<% form_for @program do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :desc %><br />
-    <%= f.text_area :desc %>
-  </p>
-  <p><%= f.submit "Submit" %></p>
+<% semantic_form_for @program do |f| %>
+  <% f.inputs do %>
+    <%= f.input :name %>
+    <%= f.input :desc %>
+    <%= f.input :users, :required => false %>
+  <% end %>
+  <%= f.buttons %>
 <% end %>

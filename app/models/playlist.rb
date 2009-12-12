@@ -6,6 +6,7 @@ class Playlist < ActiveRecord::Base
 
   belongs_to :playlist_type
   belongs_to :playlist_player
+  belongs_to :user
 
   validates_presence_of :name, :playlist_type_id, :playlist_player_id
 end

@@ -37,6 +37,7 @@ authorization do
     has_permission_on :users, :to => :manage
     has_permission_on :programs, :to => :manage
     has_permission_on :slots, :to => :manage
+    has_permission_on :program_assignments, :to => :manage
   end
 
   role :moderateur do
@@ -68,7 +69,9 @@ authorization do
 
     # Les contributeurs peuvent gerer des playlists
     has_permission_on :playlists, :to => :create
-    has_permission_on :playlists, :to => :manage
+    has_permission_on :playlists, :to => :manage do
+      if attribute :user is {user}
+    end
   end
 
   role :guest do

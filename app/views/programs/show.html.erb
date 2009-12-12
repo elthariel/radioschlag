@@ -8,6 +8,13 @@
   <strong>Description:</strong>
   <%=h @program.desc %>
 </p>
+<p>
+  <strong>Contributeurs:</strong>
+  <% for u in @program.users %>
+    <%=h u.username %> |
+  <% end %>
+</p>
+
 
 <p>
   <%= link_to "Editer", edit_program_path(@program) %> |

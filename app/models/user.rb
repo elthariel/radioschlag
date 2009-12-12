@@ -2,8 +2,9 @@ class User < ActiveRecord::Base
   # AuthLogic user model
   acts_as_authentic
 
-  has_many :incoming_audio_file
-  has_many :audio_file
+  has_many :incoming_audio_files
+  has_many :audio_files
+  has_many :playlists
   has_many :role_assignments
   has_many :roles, :through => :role_assignments
   has_many :program_assignments

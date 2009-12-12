@@ -28,6 +28,7 @@ class ProgramsController < ApplicationController
   end
 
   def update
+    params[:program][:user_ids] ||= ''
     @program = Program.find(params[:id])
     if @program.update_attributes(params[:program])
       flash[:notice] = "Successfully updated program."
