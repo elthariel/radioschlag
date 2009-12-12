@@ -45,9 +45,7 @@ authorization do
 
     has_permission_on :incoming_audio_files, :to => [:destroy]
     has_permission_on :audio_files, :to => :destroy
-    has_permission_on :ftp_accounts, :to => :read do
-      if_attribute :user => is {user}
-    end
+    has_permission_on :playlist_assignments, :to => :manage
   end
 
   role :contributeur do
@@ -55,6 +53,11 @@ authorization do
 
     # Fichier audios
     has_permission_on :audio_files, :to => :manage do
+      if_attribute :user => is {user}
+    end
+
+    # Les contribs peuvent voir leur quota
+    has_permission_on :ftp_accounts, :to => :read do
       if_attribute :user => is {user}
     end
 
@@ -70,7 +73,12 @@ authorization do
     # Les contributeurs peuvent gerer des playlists
     has_permission_on :playlists, :to => :create
     has_permission_on :playlists, :to => :manage do
-      if attribute :user is {user}
+      if_attribute :user => is {user}
+    end
+
+    # Les contributeurs peuvent ajouter des playlist a leur programes
+    has_permission_on :playlist_assignments, :to => :manage do
+      if_attribute :users => contains {user}
     end
   end
 
