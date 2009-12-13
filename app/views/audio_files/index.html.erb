@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+<!--     <th>X</th> -->
     <th>Utilisateur</th>
     <th>Fichier</th>
     <th>Type</th>
@@ -10,7 +11,8 @@
     <th>Metric</th>
   </tr>
   <% for audio_file in @audio_files %>
-    <tr>
+    <tr id="audio_file_<%= audio_file.id%>">
+<!--       <td>drap</td> -->
       <td><%=h audio_file.user.username %></td>
       <td><%=h audio_file.path %></td>
       <td><%=h audio_file.audio_file_type.name %></td>
@@ -20,6 +22,8 @@
       <td><%= link_to "Edition", edit_audio_file_path(audio_file) %></td>
       <td><%= link_to "Supprimer", audio_file, :confirm => 'Etes vous surs de vouloir supprimer ce fichier ?', :method => :delete %></td>
     </tr>
+    <%= draggable_element("audio_file_#{audio_file.id}", :ghosting => true,
+                          :revert => true) %>
   <% end %>
 </table>
 

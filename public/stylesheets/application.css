@@ -85,8 +85,40 @@ a {
     font-size: 12px;
 }
 
-#global_nav {
-    float: left;
-    font-size: 12px;
+#nav {
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding-right: 15px;
 }
 
+#main_nav {
+  font-size: 12px;
+  background-color: #eee;
+  border: solid 1px #aaa;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding-right: 15px;
+}
+
+.nav_group {
+  font-size: 12px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding-right: 15px;
+  background-color: #eee;
+  border: solid 1px #aaa;
+}
+
+.nav_item {
+  font-size: 12px;
+  margin-right: 1px;
+  margin-top: 1px;
+  padding-right: 1px;
+  background-color: #eef;
+  border: solid 1px #aaa;
+}
+
+#main {
+  background-color: #eee;
+}
