@@ -122,3 +122,9 @@ a {
 #main {
   background-color: #eee;
 }
+
+.handle {
+  font-size: 12px;
+  cursor: move;
+  color: #777
+}

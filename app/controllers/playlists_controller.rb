@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
 #  filter_access_to :add_file, :attribute_check => true, :load_method => lambda {}
 #  filter_resource_access :load_method => :load_plasdaylist
   filter_access_to :index, :show, :new, :create, :edit, :update, :destroy
-  filter_access_to :add_file, :load_method => :load_for_add_file
+  filter_access_to :add_file, :sort, :remove_file, :load_method => :load_for_ajax
 
   def index
     @playlists = Playlist.all
@@ -51,22 +51,38 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:playlist_id])
     file = AudioFile.find(params[:id].sub('audio_file_',''))
     if (!file)
-      render :text => 'nok', :status => 403
+      render :nothing => true, :status => 403
+    elsif @playlist.audio_file_assignments.exists?(:audio_file_id => file.id)
+      render :nothing => true, :status => 403
+    else
+      @playlist.audio_files << file
+      render :nothing => true
     end
+  end
 
-    @playlist.audio_files << file
+  def remove_file
+    @playlist = Playlist.find(params[:playlist_id])
+    assignment = @playlist.audio_file_assignments.find_by_audio_file_id(params[:id].sub('audio_file_',''))
+    if assignment
+      assignment.delete
+      render :update do |page|
+        page.remove "audio_file_#{assignment.audio_file_id}"
+      end
+    else
+      render :nothing => true
+    end
+  end
 
-    puts file
-    puts @playlist
-    render :text => 'ok'
+  def sort
+    @playlist = Playlist.find(params[:playlist_id])
+    render :nothing => true
   end
 
   protected
 
-  def load_for_add_file
+  def load_for_ajax
 #    puts Playlist.find(params[:playlist_id])
     puts "\n\n Ceci est un test \n\n"
-    Playlist.find(params[:playlist_id])
+    @playlist = Playlist.find(params[:playlist_id])
   end
-
 end

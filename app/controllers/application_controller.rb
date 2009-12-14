@@ -13,6 +13,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_auth_current_user
 
+  # Disable layout rendering when ajax call
+  layout proc{ |c| c.request.xhr? ? false : "application" }
+
   private
 
   def current_user_session
