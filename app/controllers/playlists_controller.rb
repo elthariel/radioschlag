@@ -5,7 +5,7 @@ class PlaylistsController < ApplicationController
   filter_access_to :add_file, :sort, :remove_file, :load_method => :load_for_ajax
 
   def index
-    @playlists = Playlist.all
+    @playlists = Playlist.all()
   end
 
   def show
@@ -75,6 +75,19 @@ class PlaylistsController < ApplicationController
 
   def sort
     @playlist = Playlist.find(params[:playlist_id])
+
+    # FIXME too many sql requests !
+    params[:audio_files_list].each_with_index do |file_id, pos|
+      f = @playlist.audio_file_assignments.find_by_audio_file_id(file_id)
+      f.position = pos + 1
+      f.save
+    end
+
+#     assignments = params[:audio_files_list].map do |file_id|
+#       @playlist.audio_file_assignments.find_by_audio_file_id(file_id)
+#     end
+#     @playlist.audio_file_assignments = assignments
+
     render :nothing => true
   end
 

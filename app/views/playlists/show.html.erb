@@ -18,16 +18,13 @@
 </p>
 <p>
   <ul id="audio_files_list"> <strong>Fichiers dans la playlist :</strong>
-  <% for f in @playlist.audio_files %>
+  <% for f in @playlist.audio_files.find(:all, :order => '"audio_file_assignments".position') %>
   <% content_tag_for :li, f do %>
     <span class="handle">[deplacer]</span>
-    <%= link_to_remote("Supprimer", :url => {:action => :remove_file, :playlist_id => @playlist.id, :id => "audio_file_#{f.id}"},
-                       :)%>
+    <%= link_to_remote("Supprimer", :url => {:action => :remove_file, :playlist_id => @playlist.id, :id => "audio_file_#{f.id}"})%>
     <%= h f.audio_file_type.name %> ::
     <%= h f.audio_file_style.name %> ::
     <%= h f.path %></li>
-    <% @playlist.audio_file_assignments.find(:first,
-       :conditions => {:playlist_id => @playlist.id, :audio_file_id => f.id}).move_to_bottom %>
   <% end %>
   <% end %>
   <ul>
