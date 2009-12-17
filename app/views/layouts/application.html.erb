@@ -36,14 +36,15 @@
           <ul id="playlists"> Playlists
           <% for p in current_user.playlists %>
             <li class="nav_item" id="playlist_<%=p.id%>"><%= link_to p.name, playlist_path(p) %></li>
-            <%= drop_receiving_element("playlist_#{p.id}",
-                :url => {:controller => 'playlists', :action => 'add_file', :playlist_id => p.id}
-            )
-            %>
+            <% if p.playlist_type.name == 'audiofile' %>
+              <%= drop_receiving_element("playlist_#{p.id}",
+                  :url => {:controller => 'playlists', :action => 'add_file', :playlist_id => p.id}) %>
+            <% end %>
           <% end %>
           </ul>
         </div>
         <% end %>
+
         <% if current_user %>
         <div class="nav_group">
           <ul> Programmes

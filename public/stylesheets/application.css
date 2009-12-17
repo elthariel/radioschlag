@@ -86,7 +86,7 @@ a {
 }
 
 #nav {
-  float: left;
+<!--   float: left; -->
   margin-right: 10px;
   margin-top: 10px;
   padding-right: 15px;

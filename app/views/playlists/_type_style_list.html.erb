@@ -1,0 +1,28 @@
+<p>
+<br>
+<table id="type_style_list">
+  <tr>
+    <th>Type</th>
+    <th>Style</th>
+    <th>Fichiers</th>
+    <th>Metric</th>
+  </tr>
+
+  <% for @a in @playlist.type_style_assignments %>
+    <%= render :partial => 'type_style_list_item' %>
+  <% end %>
+
+</table>
+</p>
+<br>
+<p>
+<strong>Ajouter un nouveau couple type/style:</strong>
+<% form_remote_tag :url => {:action => :add_style, :id => @playlist.id} do %>
+  <%= label_tag 'Type: ' %>
+  <%= collection_select('', :type_id, AudioFileType.all, :id, :name) %>
+  <%= label_tag 'Style: ' %>
+  <%= collection_select('', :style_id, AudioFileStyle.all, :id, :name) %>
+
+  <%= submit_tag 'Ajouter' %>
+<% end %>
+</p>

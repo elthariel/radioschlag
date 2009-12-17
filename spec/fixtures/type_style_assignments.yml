@@ -1,0 +1,11 @@
+one:
+  audio_file_type_id: 1
+  audio_file_style_id: 1
+  playlist_id: 1
+  metric: 1.5
+
+two:
+  audio_file_type_id: 1
+  audio_file_style_id: 1
+  playlist_id: 1
+  metric: 1.5

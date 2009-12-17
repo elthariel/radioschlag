@@ -3,6 +3,7 @@ class Playlist < ActiveRecord::Base
   has_many :programs, :through => :playlist_assignments
   has_many :audio_file_assignments, :order => 'position'
   has_many :audio_files, :through => :audio_file_assignments
+  has_many :type_style_assignments
 
   belongs_to :playlist_type
   belongs_to :playlist_player

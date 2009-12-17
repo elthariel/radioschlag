@@ -1,9 +1,4 @@
 <% title "Playlist : #{@playlist.name}" %>
-
-<p>
-  <strong>Nom:</strong>
-  <%=h @playlist.name %>
-</p>
 <p>
   <strong>Description:</strong>
   <%=h @playlist.desc %>
@@ -16,26 +11,12 @@
   <strong>Mode de lecture:</strong>
   <%=h @playlist.playlist_player.name %>
 </p>
-<p>
-  <ul id="audio_files_list"> <strong>Fichiers dans la playlist :</strong>
-  <% for f in @playlist.audio_files.find(:all, :order => '"audio_file_assignments".position') %>
-  <% content_tag_for :li, f do %>
-    <span class="handle">[deplacer]</span>
-    <%= link_to_remote("Supprimer", :url => {:action => :remove_file, :playlist_id => @playlist.id, :id => "audio_file_#{f.id}"})%>
-    <%= h f.audio_file_type.name %> ::
-    <%= h f.audio_file_style.name %> ::
-    <%= h f.path %></li>
-  <% end %>
-  <% end %>
-  <ul>
-</p>
 
-<%= sortable_element('audio_files_list', :handle => "handle",
-:url => {:action => 'sort', :playlist_id => @playlist.id}) %>
-
-<p>
-
-</p>
+<% if @playlist.playlist_type.name == 'audiofile' %>
+  <%= render :partial => 'file_list' %>
+<% elsif @playlist.playlist_type.name == 'typestyle' %>
+  <%= render :partial => 'type_style_list' %>
+<% end %>
 
 <p>
   <%= link_to "Edition", edit_playlist_path(@playlist) %> |

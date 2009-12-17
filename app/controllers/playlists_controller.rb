@@ -1,7 +1,7 @@
 class PlaylistsController < ApplicationController
 #  filter_access_to :add_file, :attribute_check => true, :load_method => lambda {}
 #  filter_resource_access :load_method => :load_plasdaylist
-  filter_access_to :index, :show, :new, :create, :edit, :update, :destroy
+  filter_access_to :index, :show, :new, :create, :edit, :update, :destroy, :add_style, :remove_style, :update_style_metric
   filter_access_to :add_file, :sort, :remove_file, :load_method => :load_for_ajax
 
   def index
@@ -73,7 +73,7 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  def sort
+  def sort_file
     @playlist = Playlist.find(params[:playlist_id])
 
     # FIXME too many sql requests !
@@ -91,11 +91,49 @@ class PlaylistsController < ApplicationController
     render :nothing => true
   end
 
+  def add_style
+    @playlist = Playlist.find(params[:id])
+    if (@playlist.type_style_assignments.exists?(:audio_file_style_id => params[:style_id], :audio_file_type_id => params[:type_id]) or !AudioFileType.exists?(params[:type_id]) or !AudioFileStyle.exists?(params[:style_id]))
+      render :nothing => true, :status => 403
+    else
+      @a = TypeStyleAssignment.new(:audio_file_type_id => params[:type_id],
+                                  :audio_file_style_id => params[:style_id])
+      @a.save
+      @playlist.type_style_assignments << @a
+      render :update do |page|
+        page.insert_html 'bottom', 'type_style_list', :partial => 'type_style_list_item'
+      end
+    end
+  end
+
+  def remove_style
+    @playlist = Playlist.find(params[:id])
+    if (@playlist.type_style_assignments.exists?(params[:type_style_id]))
+      @playlist.type_style_assignments.find(params[:type_style_id]).delete
+      render :update do |page|
+        page.remove "type_style_#{params[:type_style_id]}"
+      end
+    else
+      render :nothing =>true, :status => 403
+    end
+  end
+
+  def update_style_metric
+    @playlist = Playlist.find(params[:id])
+    if (@playlist.type_style_assignments.exists?(params[:type_style_id]))
+      a = @playlist.type_style_assignments.find(params[:type_style_id])
+      a.metric = params[:m]
+      a.save
+      render :nothing => true
+    else
+    render :nothing => true, :status => 403
+    end
+  end
+
   protected
 
+  # FIXME This is ugly, fix view to have params[:id] instead
   def load_for_ajax
-#    puts Playlist.find(params[:playlist_id])
-    puts "\n\n Ceci est un test \n\n"
     @playlist = Playlist.find(params[:playlist_id])
   end
 end
