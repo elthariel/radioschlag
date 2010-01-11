@@ -23,26 +23,9 @@
 ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##
 
+require 'radio/slot'
+
 module Radio
-
-class Slot
-  def initialize
-    @signals = Array.new
-  end
-
-  # A signal that returns false is removed from the signal list
-  def emit(*args)
-    @signals.each do |s|
-      if !s.call(args)
-        @signals.delete(s)
-      end
-    end
-  end
-
-  def connect(proc)
-    @signals.push(proc)
-  end
-end
 
 class Timer
   attr_reader :seconds, :minutes, :hours, :days, :weeks

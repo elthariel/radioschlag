@@ -1,7 +1,7 @@
 ##
-## scheduler.rb
+## slot.rb
 ## Login : <opp2@opp2-devsrv>
-## Started on  Sun Jan 10 21:47:49 2010 opp2
+## Started on  Mon Jan 11 13:26:35 2010 opp2
 ## $Id$
 ##
 ## Author(s):
@@ -23,18 +23,22 @@
 ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##
 
-require 'radio/timer'
-require 'radio/liquidsoap'
+class Slot
+  def initialize
+    @signals = Array.new
+  end
 
-t = Radio::Timer.new
-l = Radio::LiquidSoap.new('radio.sock')
+  # A signal that returns false is removed from the signal list
+  def emit(*args)
+    @signals.each do |s|
+      if !s.call(args)
+        @signals.delete(s)
+      end
+    end
+  end
 
-t.seconds.connect Proc.new {puts "tick #{Time.now}"; true}
-t.minutes.connect Proc.new {puts "minute tick"; true}
-
-t.run
-
-
-
-
+  def connect(proc)
+    @signals.push(proc)
+  end
+end
 
