@@ -5,8 +5,8 @@ development:
   sox: /usr/bin/sox
   sox_nice: 19
   sox_format: --channels 2 --type vorbis -C 4
-  sox_fx: gain -1 highpass 28 0.001q rate -v -a 44100 dither -s
-  sox_fx_low: delay 0 0.005 reverb wet-gain -25
+  sox_fx: gain -1 rate -v -a 44100 dither -s
+  sox_fx_low: delay 0 0 reverb wet-gain -30
   ftp_root: /home/opp2/code/new_radio/upload
   ftp_id: 1000
   ftp_gid: 1000
