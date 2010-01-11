@@ -27,6 +27,6 @@ set("harbor.port",12345)
 set("harbor.password","K7gxYN4sD9Cmf6p2MV2bFf2KvaBEccFw")
 
 set("server.telnet", true)
-#set("server.socket", true)
-#set("server.socket.path", "./<script>.sock")
+set("server.socket", true)
+set("server.socket.path", "./<script>.sock")
 

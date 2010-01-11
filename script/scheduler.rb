@@ -23,12 +23,18 @@
 ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##
 
-require 'sched/timer'
+require 'radio/timer'
+require 'radio/liquidsoap'
 
-t = Scheduler::Timer.new
+t = Radio::Timer.new
+l = Radio::LiquidSoap.new('radio.sock')
 
 t.seconds.connect Proc.new {puts "tick #{Time.now}"; true}
 t.minutes.connect Proc.new {puts "minute tick"; true}
 
-t.run
+#t.run
+
+
+
+
 
