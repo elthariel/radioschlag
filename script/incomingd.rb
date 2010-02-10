@@ -24,7 +24,6 @@
 ##
 
 require "#{RAILS_ROOT}/lib/sox/audio_file"
-require 'daemons'
 require 'logger'
 
 $log = Logger.new("#{RAILS_ROOT}/log/incomingd.log")
@@ -75,7 +74,7 @@ while (42)
                        :audio_file_type_id => file.audio_file_type_id,
                        :metric => 1.0, :user_id => file.user_id)
     end
-
+  else
     $log.warn "File doesn't seems to be an audio file: #{file.path}"
   end
 
