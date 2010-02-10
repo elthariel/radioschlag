@@ -38,6 +38,13 @@ Besoins sur le model :
   - 'Daemon' qui feed un liquidsoap unix socket de request pour genere la programmation
 
 --------------------------
+
+Tytouf
+
+  - Pouvoir previews les mp3 et les playlists
+  - Proprietaire du fichier? Comment voir tout les fichiers qui restent a classer ?
+  - Dans la liste des fichiers audio, on ne peut pas cliker sur edit, ca passe en mode drag and drop
+
 - Gestion de la programmation
   - Des plages horaires associees a un programme.
   - Seuls root & admin ont les droits pour toucher aux plages horaires et a l'association du programme
@@ -49,6 +56,5 @@ Besoins sur le model :
         - Joue dans l'ordre
     - Specifier par types/style
       - Joue en random ameliore de la mort
-
 
 
