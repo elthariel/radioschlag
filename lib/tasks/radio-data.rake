@@ -2,7 +2,7 @@ require 'find'
 
 namespace :radio do
   desc "Scan all the data folder for new files"
-  task (:scan => :environment) do
+  task :scan => :environment do
     root = RADIO_CONFIG[:audio_root]
     p "Radio data root dir: #{root}"
 
