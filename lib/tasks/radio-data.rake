@@ -8,15 +8,14 @@ namespace :radio do
 
     Dir.open(root).each do |type|
       if (File.directory?("#{root}/#{type}") and type != '.' and type != '..')
-
         # Now browsing the type
         Dir.open("#{root}/#{type}").each do |style|
           if (File.directory?("#{root}/#{type}/#{style}") and style != '.' and style != '..')
 
             # Now browsing the styles folder of each type
             Find.find("#{root}/#{type}/#{style}") do |path|
-              if (path =~ /\.(ogg|mp3)\Z/)
-
+              if (path =~ /\.(ogg|mp3)\Z/ and not (path =~ /\.tmp\.ogg\Z/))
+#              if (path =~ /\.(ogg|mp3)\Z/)
                 # Now we have all the file with their types and styles
                 if File.readable? path
                   _add_file_to_db(type, style, path)

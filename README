@@ -1,4 +1,4 @@
-Radio Schlag radio managements scripts. Wip
+\Radio Schlag radio managements scripts. Wip
 
 Don't forget to change the shebang on top of incoming, pure-auth,
 pure-upload script in script directory (or to fix that issue.)
@@ -10,7 +10,7 @@ pure-upload script in script directory (or to fix that issue.)
 - icecast2 (configuration not included)
 - pureftpd with custom auth backend and upload script support compiled in
 - libopenssl-ruby
-- SoX
+- SoX (install all format library, especially mp3: libsox-fmt-mp3 under debian/ubuntu)
 - RubyGems
   - Rails
   - Rake
@@ -26,13 +26,15 @@ pure-upload script in script directory (or to fix that issue.)
 In order to run the radio administration web interface as well as the
 various script/daemon associated, you must tweak some configuration
 file.
-- radio_config.yml: The radio configuration file
+- config/radio_config.yml: The radio configuration file
   - domain: ?unused
   - root: The root user of the radio: ?unused
   - audio_root: the folder containing the main data of the radio
   - ftp_root: The folder containing radio's contributors ftp upload folders.
   - ftp_quota: the default amount of data any contributor is authorized to upload.
   - ftp_sessions: the default number of active ftp session any contributor if authorized to have.
+- config/config.lira: Liquidsoap's script config
+  Set here the relevant informations regarding your icecast2 configuration
 
 ## Lauching
 
@@ -40,4 +42,10 @@ file.
   - `./script/runner ./script/incomingd.rb`
 - The radio scheduler:
   - `./script/runner ./script/scheduler.rb`
+- The liquidsoap feed and controller:
+  - `./script/radio.liq`
+- The rails application
+  - `./script/server -p port`
+    where port if the tcp port you want your webserver to listen on
+
 

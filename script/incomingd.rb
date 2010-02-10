@@ -73,9 +73,10 @@ while (42)
                        :audio_file_style_id => file.audio_file_style_id,
                        :audio_file_type_id => file.audio_file_type_id,
                        :metric => 1.0, :user_id => file.user_id)
+
+    else
+      $log.warn "File doesn't seems to be an audio file: #{file.path}"
     end
-  else
-    $log.warn "File doesn't seems to be an audio file: #{file.path}"
   end
 
   sleep 10

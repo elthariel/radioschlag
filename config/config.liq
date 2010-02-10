@@ -1,5 +1,5 @@
 #
-# This file is part of liquidsoap
+# This file is part of radio-schlag
 # Liquid soap configuration
 #
 
@@ -18,6 +18,7 @@ log_path = "log/radio.log"
 #######################################################
 # Apply global settings
 ###
+
 
 set("log.file.path", log_path)
 set("log.level", 3)

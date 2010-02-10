@@ -58,7 +58,7 @@ module Sox
       @infos[:duration] = `soxi -D '#{@infos[:path]}'`.chomp.to_i
       @infos[:bitrate] = `soxi -B '#{@infos[:path]}'`.chomp.to_i
 
-      `soxi -a '#{@infos[:path]}'`.each do |l|
+      `soxi -a '#{@infos[:path]}'`.each_line do |l|
         duple = l.split('=')
         if duple[0] and duple[1]
           @infos[duple[0].downcase] = duple[1].chomp
