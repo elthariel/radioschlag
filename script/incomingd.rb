@@ -26,9 +26,9 @@
 require "#{RAILS_ROOT}/lib/sox/audio_file"
 require 'logger'
 
-$log = Logger.new("#{RAILS_ROOT}/log/incomingd.log")
-#$log = Logger.new(STDOUT)
-#$log.level = Logger::INFO
+#$log = Logger.new("#{RAILS_ROOT}/log/incomingd.log")
+$log = Logger.new(STDOUT)
+$log.level = Logger::DEBUG
 
 
 while (42)
@@ -41,7 +41,7 @@ while (42)
 
     # If infos != nil, this is a know audio file
     if infos
-      if !(file.path =~ /___rs\.ogg\Z/)
+      if !(file.path =~ /___rs\.ogg\Z/ or file.path =~ /\.mp3\.ogg\Z/)
 
         # Building sox conversion command line, using config options in config/radio_config.yml
         cmd =  "nice -n #{RADIO_CONFIG[:sox_nice]} "
@@ -60,6 +60,7 @@ while (42)
 
         # Executing the build command line
         $log.info "Launching conversion for incoming file (low:#{low}): #{file.path}"
+        $log.debug "Running: #{cmd}"
         cmd_res = `#{cmd}`
         $log.warn "#{cmd_res}"
 

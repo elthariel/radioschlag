@@ -48,17 +48,17 @@ module Sox
 
       @infos[:path] = File.expand_path(path)
 
-      if (`soxi '#{@infos[:path]}' 2>&1` =~ /soxi FAIL/)
+      if (`soxi "#{@infos[:path]}" 2>&1` =~ /soxi FAIL/)
         raise "Not an audio file"
       end
 
-      @infos[:type] = `soxi -t '#{@infos[:path]}'`.chomp
-      @infos[:rate] = `soxi -r '#{@infos[:path]}'`.chomp.to_i
-      @infos[:chans] = `soxi -c '#{@infos[:path]}'`.chomp.to_i
-      @infos[:duration] = `soxi -D '#{@infos[:path]}'`.chomp.to_i
-      @infos[:bitrate] = `soxi -B '#{@infos[:path]}'`.chomp.to_i
+      @infos[:type] = `soxi -t "#{@infos[:path]}"`.chomp
+      @infos[:rate] = `soxi -r "#{@infos[:path]}"`.chomp.to_i
+      @infos[:chans] = `soxi -c "#{@infos[:path]}"`.chomp.to_i
+      @infos[:duration] = `soxi -D "#{@infos[:path]}"`.chomp.to_i
+      @infos[:bitrate] = `soxi -B "#{@infos[:path]}"`.chomp.to_i
 
-      `soxi -a '#{@infos[:path]}'`.each_line do |l|
+      `soxi -a "#{@infos[:path]}"`.each_line do |l|
         duple = l.split('=')
         if duple[0] and duple[1]
           @infos[duple[0].downcase] = duple[1].chomp
