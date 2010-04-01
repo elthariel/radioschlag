@@ -80,6 +80,15 @@ class Timer
     @running
   end
 
+  def self.time_to_week_minutes(atime)
+    day = (atime.wday - 1) % 7
+    day * 60 * 24 + atime.hour * 60 + atime.min
+  end
+
+  def self.now
+    self.time_to_week_minutes(Time.now)
+  end
+
 end
 
 end

@@ -3,6 +3,11 @@ class AudioFilesController < ApplicationController
 
   def index
     @audio_files = AudioFile.all
+
+    respond_to do |format|
+      format.html {render :action => 'index'}
+      format.json {render :json => @audio_files}
+    end
   end
 
   def edit

@@ -1,13 +1,13 @@
 ##
-## slot.rb
-## Login : <opp2@opp2-devsrv>
-## Started on  Mon Jan 11 13:26:35 2010 opp2
+## playlist_maker_order.rb
+## Login : <elthariel@rincevent>
+## Started on  Mon Mar 29 15:21:51 2010 elthariel
 ## $Id$
 ##
 ## Author(s):
-##  - opp2 <>
+##  - elthariel <elthariel@gmail.com>
 ##
-## Copyright (C) 2010 opp2
+## Copyright (C) 2010 elthariel
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
 ## the Free Software Foundation; either version 3 of the License, or
@@ -25,23 +25,25 @@
 
 module Radio
 
-class Slot
+class OrderPlaylistMaker
   def initialize
-    @signals = Array.new
   end
 
-  # A signal that returns false is removed from the signal list
-  def emit(*args)
-    @signals.each do |s|
-      if !s.call(args)
-        @signals.delete(s)
+  def make(active_record_playlist_object, pool, seconds)
+    length = 0
+    pls = Array.new
+
+    pool.files.each do |f|
+      if length < seconds
+        pls.push f
+        length += f.duration
       end
     end
+
+    Playlist.new(pls, length)
+
   end
 
-  def connect(proc)
-    @signals.push(proc)
-  end
 end
 
 end

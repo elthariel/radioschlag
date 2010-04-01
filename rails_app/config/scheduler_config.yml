@@ -1,0 +1,14 @@
+development:
+  playlist_lookahead: 10
+  liq_socket: ./radio.sock
+  liq_queue: rq
+
+test:
+  playlist_lookahead: 10
+  liq_socket: ./radio.sock
+  liq_queue: rq
+
+production:
+  playlist_lookahead: 10
+  liq_socket: ./radio.sock
+  liq_queue: rq

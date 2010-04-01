@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
 #  filter_access_to :add_file, :attribute_check => true, :load_method => lambda {}
 #  filter_resource_access :load_method => :load_plasdaylist
   filter_access_to :index, :show, :new, :create, :edit, :update, :destroy, :add_style, :remove_style, :update_style_metric
-  filter_access_to :add_file, :sort, :remove_file, :load_method => :load_for_ajax
+  filter_access_to :add_file, :sort_file, :remove_file, :load_method => :load_for_ajax
 
   def index
     @playlists = Playlist.all()

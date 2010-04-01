@@ -1,13 +1,13 @@
 ##
-## slot.rb
-## Login : <opp2@opp2-devsrv>
-## Started on  Mon Jan 11 13:26:35 2010 opp2
+## pool_maker_audiofile.rb
+## Login : <elthariel@rincevent>
+## Started on  Mon Mar 29 13:08:45 2010 elthariel
 ## $Id$
 ##
 ## Author(s):
-##  - opp2 <>
+##  - elthariel <elthariel@gmail.com>
 ##
-## Copyright (C) 2010 opp2
+## Copyright (C) 2010 elthariel
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
 ## the Free Software Foundation; either version 3 of the License, or
@@ -25,22 +25,14 @@
 
 module Radio
 
-class Slot
+class AudiofilePoolMaker
   def initialize
-    @signals = Array.new
   end
 
-  # A signal that returns false is removed from the signal list
-  def emit(*args)
-    @signals.each do |s|
-      if !s.call(args)
-        @signals.delete(s)
-      end
-    end
-  end
+  def make(active_record_playlist_object)
+    pls = active_record_playlist_object
 
-  def connect(proc)
-    @signals.push(proc)
+    Pool.new(pls.audio_files)
   end
 end
 

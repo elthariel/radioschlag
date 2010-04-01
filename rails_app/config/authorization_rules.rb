@@ -72,7 +72,7 @@ authorization do
 
     # Les contributeurs peuvent gerer des playlists
     has_permission_on :playlists, :to => :create
-    has_permission_on :playlists, :to => [:manage, :add_file, :sort, :remove_file, :add_style, :remove_style, :update_style_metric] do
+    has_permission_on :playlists, :to => [:manage, :add_file, :sort_file, :remove_file, :add_style, :remove_style, :update_style_metric] do
       if_attribute :user => is {user}
     end
 

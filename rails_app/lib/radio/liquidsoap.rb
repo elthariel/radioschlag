@@ -73,7 +73,12 @@ end
 
 class LiquidSoap
   def initialize(path)
-    @socket = UNIXSocket.open(path)
+    begin
+      @socket = UNIXSocket.open(path)
+    rescue
+      puts "Unable to connect to liquidsoap socket #{path}"
+      exit 42
+    end
   end
 
   # Arguments with space must be quoted or escaped
