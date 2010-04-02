@@ -29,13 +29,13 @@ Besoins sur le model :
   - X Une plage horaire a un programme
   - X Une plage horaires a plusieurs contributeurs
   - Un programme a plusieurs playlists
-  - Plusieurs mode de lecture de playlists
-    - Lecture dans l'ordre, type 'order'
-    - Random ameliore avec criteres de types/styles
+  - x Plusieurs mode de lecture de playlists
+    - X Lecture dans l'ordre, type 'order'
+    - x 'Random' avec mise a jour de la metric pour que les tracks soient jouees avec equite.
   - x Plusieurs types de playlists
     - X Playlist de tracks
     - Playlist de type/style
-  - 'Daemon' qui feed un liquidsoap unix socket de request pour genere la programmation
+  - x 'Daemon' qui feed un liquidsoap unix socket de request pour genere la programmation
 
 --------------------------
 

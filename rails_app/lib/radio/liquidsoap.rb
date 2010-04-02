@@ -60,12 +60,14 @@ class LiquidSoapProxy
   def exec(str)
     result = Array.new
 
+    #puts "LiquidSoap socket, exec(#{str})"
     @socket.puts str
 
     while (line = @socket.gets.chomp) != 'END'
       result.push line
     end
-
+    #puts "LiquidSoap socket result -->"
+    #puts "\t#{str}"
     result
   end
 

@@ -10,4 +10,13 @@ class Playlist < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name, :playlist_type_id, :playlist_player_id
+  validate :validate_type_mode
+
+  protected
+  def validate_type_mode
+    if playlist_type.name == 'typestyle' and playlist_player.name == 'order'
+      errors.add_to_base("TypeStyle playlist could not be played in order, you should use 'random'")
+    end
+  end
+
 end

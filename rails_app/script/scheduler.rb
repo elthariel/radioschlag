@@ -35,7 +35,7 @@ l = Radio::LiquidSoap.new(SCHEDULER_CONFIG[:liq_socket])
 s = Radio::Scheduler.new(l)
 s.tick
 
-t.seconds.connect Proc.new {puts "tick #{Time.now}"; true}
+#t.seconds.connect Proc.new {puts "tick #{Time.now}"; true}
 t.minutes.connect Proc.new {s.tick}
 
 t.run

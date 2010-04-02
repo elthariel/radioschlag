@@ -64,8 +64,11 @@ class Scheduler
   end
 
   def output_playlist(pls)
-    puts "Output a new playlist"
-    pls.files.each { |f| puts f.path }
+    ## Use a logger, and log this
+    queue = @liq.send(SCHEDULER_CONFIG[:liq_queue])
+    pls.files.each do |audiofile|
+        queue.push "#{audiofile.path}"
+      end
   end
 
   def default_playlist
