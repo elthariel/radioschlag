@@ -1,0 +1,38 @@
+#
+# This file is part of RadioSchlag radio management script
+#
+
+This file describe the use of the 'metric' column found in many tables
+of radio schlag.
+
+# Unused
+These metric columns are not currently used in the radio schlag code
+base :
+- metric in audio_file_styles
+- metric in audio_file_types
+
+# Audio Files
+
+For each audio file referenced in our db, we are assigning it a
+metric, which represents how many time / how often it has been aired
+on the radio. Everytime the file is played, the metric column is
+incremented by a number defined in scheduler_config.yml:
+(audiofile_metric_increment). This metric is therefore used to compute
+the probability of a sonf being added in a scheduler playlist to be
+effectively played on the radio. This tries to avoid the same tracks
+being played again and again, and gives a better impression of random
+to the listener.
+
+# Type Styles elements of playlists.
+
+When a playlist is configured in typestyle mode, each type and style
+couple is assigned a metric. It represent it's weight when generating
+the effective file of list to be played. We adjust the priority of the
+tracks of this type and style regarding this metric. If the type and
+style couple has a metric of 2.0, the audio files of this type and
+style have their initial probability of be played increased by a
+factor of 2.
+
+
+
+
