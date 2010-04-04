@@ -48,7 +48,6 @@ Tytouf
 - Gestion de la programmation
   - ? Des plages horaires associees a un programme.
   - ? Seuls root & admin ont les droits pour toucher aux plages horaires et a l'association du programme
-  - ----Un programme = differentes playlists, avec un ratio de lecture (genre %)
   - X 2 types de playlist
     - X Specifier directement les audiofiles
       - X 2 facon de jouer les playlists
@@ -62,11 +61,14 @@ Tytouf
 
 - Scheduler
   - Insert Jingles
-  - Gestion du live :
-    - Une personne peut se connecter si elle a des droits sur le
+  - Kan on genere en random on veut qu'il ne mette pas deux fois les
+    memes tracks dans une seule playlist, mais il fo faire attention a
+    ne pas tourner en boucle dans le cas de pool trop petit
+  - X Gestion du live :
+    - X Une personne peut se connecter si elle a des droits sur le
       programme, que la plage horaire autorise le live et si il est
       moins de 2 minutes avant la fin de la plage horaire.
-    - A la fin de chaque plage horaire, on deconnecte les gens qui
+    - X A la fin de chaque plage horaire, on deconnecte les gens qui
       sont en live.
 
 - Model

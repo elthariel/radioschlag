@@ -51,8 +51,16 @@ class Scheduler
     if @next.slot.start - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]
       puts "Scheduler: Generating a new playlist"
       effective_playlist = generate_playlist(@next)
+      puts "Scheduler: The effective length of the playlist is #{effective_playlist.length / 60.0} minutes"
       output_playlist effective_playlist
       @next = next_task
+    end
+
+    # At the end of every slot, we double kick (to be sure,
+    # and because it's funny) client connected to harbor live input.
+    if Timer.now == @next.slot.start - 1 or Timer.now == @next.slot.start - 2
+      puts "Scheduler: Kick harbor live source"
+      @liq.send(SCHEDULER_CONFIG[:liq_live]).kick
     end
   end
 
@@ -61,6 +69,7 @@ class Scheduler
     if Timer.now > @next.slot.start
       length -= Timer.now - @next.slot.start
     end
+    puts "Scheduler: New playlist is #{length} minutes long"
     @playlist_factory.make(@next.playlist, length * 60)
   end
 
