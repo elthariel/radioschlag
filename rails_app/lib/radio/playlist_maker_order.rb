@@ -35,8 +35,8 @@ class OrderPlaylistMaker
 
     pool.files.each do |f|
       if length < seconds
-        pls.push f
-        length += f.duration
+        pls.push f[0]
+        length += f[0].duration
       end
     end
 

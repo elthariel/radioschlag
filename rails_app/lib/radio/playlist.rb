@@ -24,6 +24,7 @@
 ##
 
 require 'radio/playlist_maker_order'
+require 'radio/playlist_maker_random'
 
 module Radio
 
@@ -47,12 +48,16 @@ class PlaylistFactory
     pls_db = active_record_playlist_object
     pool = @pool_factory.make(pls_db)
 
-    begin
-      maker_name = pls.playlist_player.name.capitalize + 'PlaylistMaker'
-      strategy = Kernel.const_get(maker_name).new
-    rescue
-      strategy = OrderPlaylistMaker.new
-    end
+    puts "PlaylistFactory: New playlist"
+
+#    begin
+      maker_name = pls_db.playlist_player.name.capitalize + 'PlaylistMaker'
+      puts "PlaylistFactory: Using this maker: #{maker_name}"
+      strategy = Radio.const_get(maker_name.to_s).new
+    # rescue
+    #   puts "Playlist Maker not found, using the default one, might not work"
+    #   strategy = OrderPlaylistMaker.new
+    # end
 
     strategy.make(pls_db, pool, seconds)
   end

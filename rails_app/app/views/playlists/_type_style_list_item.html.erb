@@ -3,7 +3,7 @@
   <td><%= @a.audio_file_type.name %></td>
   <td><%= AudioFile.all(:conditions => {:audio_file_type_id => @a.audio_file_type_id,
     :audio_file_style_id => @a.audio_file_style_id}).length %></td>
-  <td> <form><input id="type_style_metric_<%= @a.id %>" name="m" type="text" value="<%= @a.metric %>" size="1" /> </form></td>
+  <td> <form><input id="type_style_metric_<%= @a.id %>" name="m" type="text" value="<%= @a.metric %>" size="3" /> </form></td>
   <td><%= link_to_remote("Supprimer", :url => {:action => :remove_style, :id => @playlist.id, :type_style_id => @a.id}) %></td>
 
   <%= observe_field "type_style_metric_#{@a.id}",

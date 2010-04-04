@@ -39,10 +39,10 @@ class TypestylePoolMaker
     pls.type_style_assignments.each do |ts|
         files = AudioFile.all(:conditions => {:audio_file_type_id => ts.audio_file_type_id,
                                 :audio_file_style_id => ts.audio_file_style_id})
-#        if (files.length > 0)
-          metric_coef = ts.metric / file.length
-          files.each { |f| pool.push [f, (1.0 / f.metric) * ts.metric] }
-#        end
+        if (files.length > 0)
+          metric_coef = ts.metric / files.length
+          files.each { |f| pool.push [f, (1.0 / f.metric) * metric_coef] }
+        end
       end
 
     Pool.new(pool)

@@ -2,13 +2,16 @@ development:
   playlist_lookahead: 10
   liq_socket: ./radio.sock
   liq_queue: rq
+  audiofile_metric_increment: 0.3
 
 test:
   playlist_lookahead: 10
   liq_socket: ./radio.sock
   liq_queue: rq
+  audiofile_metric_increment: 0.3
 
 production:
   playlist_lookahead: 10
   liq_socket: ./radio.sock
   liq_queue: rq
+  audiofile_metric_increment: 0.3

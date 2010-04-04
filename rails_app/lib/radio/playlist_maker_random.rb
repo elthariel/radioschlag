@@ -43,6 +43,7 @@ module BTree
       !isLeaf?
     end
 
+    # Use when debugging your probability tree
     def print(level = 0)
       pad = String.new
 
@@ -72,12 +73,15 @@ class RandomPlaylistMaker
     poolmap = build_itermediate_filelist(pool)
     tree = build_probability_tree(poolmap)
 
-    tree.print
+    #tree.print
 
     while length < seconds do
       track = toss_the_ball(tree, poolmap[poolmap.length - 1][0])
       pls.push track.label
       length += track.label.duration
+      # FIXME We should not update metric of some files (jingle for example)
+      track.label.metric += SCHEDULER_CONFIG[:audiofile_metric_increment]
+      track.label.save
     end
 
     Playlist.new(pls, length)
@@ -118,7 +122,7 @@ class RandomPlaylistMaker
 
   def build_itermediate_filelist(pool)
     probability = 0
-    fl = pool.files.map { |f| [probability += f[1], f[0]] }
+    pool.files.map { |f| [probability += f[1], f[0]] }
   end
 end
 end

@@ -49,6 +49,7 @@ class Scheduler
 
   def tick
     if @next.slot.start - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]
+      puts "Scheduler: Generating a new playlist"
       effective_playlist = generate_playlist(@next)
       output_playlist effective_playlist
       @next = next_task
@@ -67,6 +68,8 @@ class Scheduler
     ## Use a logger, and log this
     queue = @liq.send(SCHEDULER_CONFIG[:liq_queue])
     pls.files.each do |audiofile|
+        # When debugging playlist generation
+        #puts "#{audiofile.path}"
         queue.push "#{audiofile.path}"
       end
   end

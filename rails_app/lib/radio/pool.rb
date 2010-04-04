@@ -24,6 +24,7 @@
 ##
 
 require 'radio/pool_maker_audiofile'
+require 'radio/pool_maker_typestyle'
 
 module Radio
 
@@ -43,10 +44,14 @@ class PoolFactory
   def make(active_record_playlist_object)
     pls = active_record_playlist_object
 
+    puts "PoolFactory: New pool"
+
     begin
       maker_name = pls.playlist_type.name.capitalize + 'PoolMaker'
-      strategy = Kernel.const_get(maker_name).new
+      puts "PoolMaker: Using this maker: #{maker_name}"
+      strategy = Radio.const_get(maker_name.to_s).new
     rescue
+      puts "Pool Maker not found, using the default one, might not work"
       strategy = AudiofilePoolMaker.new
     end
 
