@@ -28,14 +28,14 @@ Besoins sur le model :
   - X Plage horaire
   - X Une plage horaire a un programme
   - X Une plage horaires a plusieurs contributeurs
-  - Un programme a plusieurs playlists
-  - x Plusieurs mode de lecture de playlists
+  - XUn programme a plusieurs playlists
+  - X Plusieurs mode de lecture de playlists
     - X Lecture dans l'ordre, type 'order'
-    - x 'Random' avec mise a jour de la metric pour que les tracks soient jouees avec equite.
+    - X 'Random' avec mise a jour de la metric pour que les tracks soient jouees avec equite.
   - x Plusieurs types de playlists
     - X Playlist de tracks
-    - Playlist de type/style
-  - x 'Daemon' qui feed un liquidsoap unix socket de request pour genere la programmation
+    - X Playlist de type/style
+  - X 'Daemon' qui feed un liquidsoap unix socket de request pour genere la programmation
 
 --------------------------
 
@@ -46,19 +46,30 @@ Tytouf
   - Dans la liste des fichiers audio, on ne peut pas cliker sur edit, ca passe en mode drag and drop
 
 - Gestion de la programmation
-  - Des plages horaires associees a un programme.
-  - Seuls root & admin ont les droits pour toucher aux plages horaires et a l'association du programme
-  - Un programme = differentes playlists, avec un ratio de lecture (genre %)
-  - 2 types de playlist
-    - Specifier directement les audiofiles
-      - 2 facon de jouer les playlists
-        - Random ameliore
-        - Joue dans l'ordre
-    - Specifier par types/style
-      - Joue en random ameliore de la mort
+  - ? Des plages horaires associees a un programme.
+  - ? Seuls root & admin ont les droits pour toucher aux plages horaires et a l'association du programme
+  - ----Un programme = differentes playlists, avec un ratio de lecture (genre %)
+  - X 2 types de playlist
+    - X Specifier directement les audiofiles
+      - X 2 facon de jouer les playlists
+        - X Random ameliore
+        - X Joue dans l'ordre
+    - X Specifier par types/style
+      - X Joue en random ameliore de la mort
 
 
 ---------------------------
 
 - Scheduler
   - Insert Jingles
+  - Gestion du live :
+    - Une personne peut se connecter si elle a des droits sur le
+      programme, que la plage horaire autorise le live et si il est
+      moins de 2 minutes avant la fin de la plage horaire.
+    - A la fin de chaque plage horaire, on deconnecte les gens qui
+      sont en live.
+
+- Model
+  - Un programme ne devrait avoir qu'une seule playlist, et on devrait
+    pouvoir switcher entre les playlists des gens qui sont assignees
+    sur le programme. (passer de many to many a one to one)
