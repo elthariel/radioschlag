@@ -65,6 +65,8 @@ class RandomPlaylistMaker
 
   def make(active_record_playlist_object, pool, seconds)
     active_pls = active_record_playlist_object
+    # Are we allowing? a track to be more than once in a playlist
+    replay = seconds * 2 >= pool.length
     pls = Array.new
     length = 0
 
@@ -77,11 +79,16 @@ class RandomPlaylistMaker
 
     while length < seconds do
       track = toss_the_ball(tree, poolmap[poolmap.length - 1][0])
+      if !replay and track.instance_variable_get(:@played)
+        next
+      end
       pls.push track.label
       length += track.label.duration
       # FIXME We should not update metric of some files (jingle for example)
       track.label.metric += SCHEDULER_CONFIG[:audiofile_metric_increment]
+      track.instance_variable_set(:@played, true)
       track.label.save
+
     end
 
     Playlist.new(pls, length)
@@ -90,8 +97,9 @@ class RandomPlaylistMaker
   private
   def toss_the_ball(tree, max)
     ball = rand * max
-    puts "The ball is #{ball}"
     current = tree
+
+    #puts "The ball is #{ball}"
 
     while (current.isNode?) do
       if (ball <= current.label)

@@ -31,10 +31,12 @@ class AudiofilePoolMaker
 
   def make(active_record_playlist_object)
     pls = active_record_playlist_object
+    len = 0
 
     list = pls.audio_files.map { |f| [f, 1.0 / f.metric] }
+    list.each { |e| len += e[0].duration }
 
-    Pool.new(list)
+    Pool.new(list, len)
   end
 end
 

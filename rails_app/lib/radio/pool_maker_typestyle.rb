@@ -32,6 +32,7 @@ class TypestylePoolMaker
   def make(active_record_playlist_object)
     pls = active_record_playlist_object
     pool = Array.new
+    len = 0
 
     puts "TypestylePoolMaker: Generating a new pool"
 
@@ -41,11 +42,14 @@ class TypestylePoolMaker
                                 :audio_file_style_id => ts.audio_file_style_id})
         if (files.length > 0)
           metric_coef = ts.metric / files.length
-          files.each { |f| pool.push [f, (1.0 / f.metric) * metric_coef] }
+          files.each do |f|
+            pool.push [f, (1.0 / f.metric) * metric_coef]
+            len += f.duration
+          end
         end
       end
 
-    Pool.new(pool)
+    Pool.new(pool, len)
   end
 end
 

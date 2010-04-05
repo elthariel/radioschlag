@@ -36,7 +36,10 @@ s = Radio::Scheduler.new(l)
 s.tick
 
 #t.seconds.connect Proc.new {puts "tick #{Time.now}"; true}
-t.minutes.connect Proc.new {s.tick}
+#t.minutes.connect Proc.new {s.tick}
+t.seconds.connect Proc.new {s.tick}
+
+
 
 t.run
 

@@ -29,11 +29,12 @@ require 'radio/pool_maker_typestyle'
 module Radio
 
 class Pool
-  attr_reader :files
+  attr_reader :files, :length
 
-  def initialize(files)
+  def initialize(files, length)
     # An array of active record AudioFile objects
     @files = files
+    @length = length
   end
 end
 

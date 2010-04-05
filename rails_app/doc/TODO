@@ -71,6 +71,12 @@ Tytouf
     - X A la fin de chaque plage horaire, on deconnecte les gens qui
       sont en live.
 
+  - X un pool a desormais un membre length qui represente la longueur du
+  pool en seconde, et si le pool et plus long que la longueur de la
+  playlist demandee, alors on peut avoir une playlist sans doublon
+  - gerer les playlists qui ont plus de 100 fichiers -> pas assez de rid
+
+
 - Model
   - Un programme ne devrait avoir qu'une seule playlist, et on devrait
     pouvoir switcher entre les playlists des gens qui sont assignees

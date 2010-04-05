@@ -48,8 +48,14 @@ class Scheduler
   end
 
   def tick
-    if @next.slot.start - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]
-      puts "Scheduler: Generating a new playlist"
+    schedule_new_slot = false
+
+    if (@next.slot.start == 0 and 10080 - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]) or @next.slot.start - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]
+      schedule_new_slot = true
+    end
+
+    if schedule_new_slot
+      puts "Scheduler: Generating a new playlist, for slot #{@next.slot.name}"
       effective_playlist = generate_playlist(@next)
       puts "Scheduler: The effective length of the playlist is #{effective_playlist.length / 60.0} minutes"
       output_playlist effective_playlist
@@ -62,6 +68,9 @@ class Scheduler
       puts "Scheduler: Kick harbor live source"
       @liq.send(SCHEDULER_CONFIG[:liq_live]).kick
     end
+
+    # Return true or else or callback won't be called again
+    true
   end
 
   def generate_playlist(task)
@@ -101,7 +110,6 @@ class Scheduler
     # 10080 minutes is the length in minutes of a week
     # We are wrapping the end of the week here.
     slot = ::Slot.first(:conditions => {:start => @next.slot.end % 10080})
-    puts slot.name
     pls = get_playlist_from_slot(slot)
     Task.new(slot, pls)
   end
