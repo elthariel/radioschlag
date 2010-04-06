@@ -48,29 +48,48 @@ class Scheduler
   end
 
   def tick
+    manage_playlist_generation
+    manage_playlist_feeding
+    manage_live
+
+    # Return true or else or callback won't be called again
+    true
+  end
+
+  # We are here working around a limitation of liquidsoap queues.
+  # There is a globally limited number (100) of request in queues.
+  def manage_playlist_feeding
+    in_queue = @liq.send(SCHEDULER_CONFIG[:liq_queue].to_s).pending_length[0].to_i
+    if @current_playlist.files.length > 0 and in_queue < 15
+      (15 - in_queue).times do
+          if @current_playlist.files.length > 0
+            @liq.send(SCHEDULER_CONFIG[:liq_queue].to_s).push @current_playlist.files.shift.path
+          end
+        end
+    end
+  end
+
+  def manage_playlist_generation
     schedule_new_slot = false
 
     if (@next.slot.start == 0 and 10080 - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]) or @next.slot.start - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]
       schedule_new_slot = true
     end
-
     if schedule_new_slot
       puts "Scheduler: Generating a new playlist, for slot #{@next.slot.name}"
-      effective_playlist = generate_playlist(@next)
-      puts "Scheduler: The effective length of the playlist is #{effective_playlist.length / 60.0} minutes"
-      output_playlist effective_playlist
+      @current_playlist = generate_playlist(@next)
+      puts "Scheduler: The effective length of the playlist is #{@current_playlist.length / 60.0} minutes"
       @next = next_task
     end
+  end
 
+  def manage_live
     # At the end of every slot, we double kick (to be sure,
     # and because it's funny) client connected to harbor live input.
     if Timer.now == @next.slot.start - 1 or Timer.now == @next.slot.start - 2
       puts "Scheduler: Kick harbor live source"
       @liq.send(SCHEDULER_CONFIG[:liq_live]).kick
     end
-
-    # Return true or else or callback won't be called again
-    true
   end
 
   def generate_playlist(task)

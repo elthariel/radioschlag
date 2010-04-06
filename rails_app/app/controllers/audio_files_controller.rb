@@ -2,11 +2,17 @@ class AudioFilesController < ApplicationController
   filter_resource_access
 
   def index
-    @audio_files = AudioFile.all
 
     respond_to do |format|
-      format.html {render :action => 'index'}
-      format.json {render :json => @audio_files}
+      format.html do
+        # @posts = Post.paginate_by_board_id @board.id, :page => params[:page], :order => 'updated_at DESC'
+        @audio_files = AudioFile.paginate :page => params[:page], :order => 'user_id'
+        render :action => 'index'
+      end
+      format.json do
+        @audio_files = AudioFile.all
+        render :json => @audio_files
+      end
     end
   end
 

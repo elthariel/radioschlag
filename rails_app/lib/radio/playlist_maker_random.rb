@@ -88,7 +88,6 @@ class RandomPlaylistMaker
       track.label.metric += SCHEDULER_CONFIG[:audiofile_metric_increment]
       track.instance_variable_set(:@played, true)
       track.label.save
-
     end
 
     Playlist.new(pls, length)

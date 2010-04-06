@@ -28,6 +28,14 @@ namespace :radio do
     end
   end
 
+  desc "Reset to 1.0 all the audiofiles metric colum"
+  task :reset_metric => :environment do
+    tracks = AudioFile.all
+    tracks.each do |f|
+      f.metric = 1.0
+      f.save
+    end
+  end
 
 end
 

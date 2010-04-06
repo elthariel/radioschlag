@@ -61,7 +61,7 @@ Tytouf
 
 - Scheduler
   - Insert Jingles
-  - Kan on genere en random on veut qu'il ne mette pas deux fois les
+  - X Kan on genere en random on veut qu'il ne mette pas deux fois les
     memes tracks dans une seule playlist, mais il fo faire attention a
     ne pas tourner en boucle dans le cas de pool trop petit
   - X Gestion du live :
@@ -74,7 +74,7 @@ Tytouf
   - X un pool a desormais un membre length qui represente la longueur du
   pool en seconde, et si le pool et plus long que la longueur de la
   playlist demandee, alors on peut avoir une playlist sans doublon
-  - gerer les playlists qui ont plus de 100 fichiers -> pas assez de rid
+  - X gerer les playlists qui ont plus de 100 fichiers -> pas assez de rid
 
 
 - Model
