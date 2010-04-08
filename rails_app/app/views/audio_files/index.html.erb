@@ -17,14 +17,15 @@
   <% for audio_file in @audio_files %>
     <tr id="audio_file_<%= audio_file.id%>">
 <!--       <td>drap</td> -->
-      <td><%=h audio_file.user.username %></td>
-      <td><%=h audio_file.path %></td>
-      <td><%=h audio_file.audio_file_type.name %></td>
-      <td><%=h audio_file.audio_file_style.name %></td>
-      <td><%=h seconds_to_string(audio_file.duration) %></td>
-      <td><%=h audio_file.metric %></td>
+      <td><%= h audio_file.user.username %></td>
+      <td><%= last_folder_and_name audio_file %></td>
+      <td><%= h audio_file.audio_file_type.name %></td>
+      <td><%= h audio_file.audio_file_style.name %></td>
+      <td><%= h seconds_to_string(audio_file.duration) %></td>
+      <td><%= h audio_file.metric %></td>
       <td><%= link_to "Edition", edit_audio_file_path(audio_file) %></td>
       <td><%= link_to "Supprimer", audio_file, :confirm => 'Etes vous surs de vouloir supprimer ce fichier ?', :method => :delete %></td>
+      <td><%= audio_tag audio_file %></td>
     </tr>
     <%= draggable_element("audio_file_#{audio_file.id}", :ghosting => true,
                           :revert => true) %>

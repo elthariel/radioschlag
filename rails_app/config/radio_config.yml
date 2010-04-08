@@ -12,6 +12,7 @@ development:
   ftp_gid: 1000
   ftp_default_quota: 104857600
   ftp_sessions: 3
+  http_listen: http://10.10.2.247:4242/audio
 
 test:
   domain: test.host
