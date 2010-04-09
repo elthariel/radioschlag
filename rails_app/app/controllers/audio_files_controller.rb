@@ -8,7 +8,7 @@ class AudioFilesController < ApplicationController
     respond_to do |format|
       format.html do
         # @posts = Post.paginate_by_board_id @board.id, :page => params[:page], :order => 'updated_at DESC'
-        @audio_files = AudioFile.paginate :page => params[:page], :order => 'user_id', :conditions => cond
+        @audio_files = AudioFile.paginate :page => params[:page], :order => 'audio_file_style_id, audio_file_type_id, user_id, path', :conditions => cond
         render :action => 'index'
       end
       format.json do
