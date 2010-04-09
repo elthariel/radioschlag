@@ -50,19 +50,19 @@ class AudioFilesController < ApplicationController
     cond = {}
 
     # Owner condition
-    if params[:user]
+    if params[:user] and params[:user][:username]
       puts "\n\n\n\n\n\n\n#{params[:user]} #{current_user.id}\n\n\n\n\n\n\n\n"
-      if params[:user] == 'me' and current_user
+      if params[:user][:username] == 'me' and current_user
         cond[:user_id] = current_user.id
       else
-        id = User.first(:conditions => {:username => params[:user]}).id
+        id = User.first(:conditions => {:username => params[:user][:username]}).id
         cond[:user_id] = id if id
       end
     end
 
     # Type and Style conditions
-    cond[:audio_file_type_id] = params[:type] if params[:type]
-    cond[:audio_file_style_id] = params[:style] if params[:style]
+    cond[:audio_file_type_id] = params[:audio_file_type][:id] if params[:audio_file_type] and params[:audio_file_type][:id]
+    cond[:audio_file_style_id] = params[:audio_file_style][:id] if params[:audio_file_type] and params[:audio_file_style][:id]
 
     # Return the built conditions
     cond

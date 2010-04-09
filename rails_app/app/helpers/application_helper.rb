@@ -14,4 +14,11 @@ module ApplicationHelper
       "#{m}:#{sprintf('%.2d', s)}"
     end
   end
+
+  def files_to_sort
+    if current_user
+      AudioFile.all(:conditions => {:audio_file_style_id => 1,
+                    :audio_file_type_id => 1}).length
+    end
+  end
 end
