@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   config.gem 'declarative_authorization', :source => 'http://gemcutter.org'
   config.gem 'acts_as_list', :source => 'http://gemcutter.org'
   config.gem 'formtastic'
+  config.gem 'composite_primary_keys'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -43,3 +44,5 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+require 'composite_primary_keys'

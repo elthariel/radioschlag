@@ -18,4 +18,17 @@ test:
   audio_root: /home/opp2/code/new_radio/data
 
 production:
-  domain: example.com
+  domain: radio.schlag.fr
+  root: root
+  audio_root: /home/radio-schlag/new_radio/data/main
+  sox: /usr/local/bin/sox
+  sox_nice: 19
+  sox_format: --channels 2 --type vorbis -C 4
+  sox_fx: gain -1 rate -v -a 44100 dither -s
+  sox_fx_low: delay 0 0 reverb wet-gain -30
+  ftp_root: /home/radio-schlag/new_radio/data/upload
+  ftp_id: 1002
+  ftp_gid: 1002
+  ftp_default_quota: 104857600
+  ftp_sessions: 3
+  

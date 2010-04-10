@@ -1,4 +1,4 @@
-#! /home/opp2/code/new_radio/runner
+#! /home/radio-schlag/new_radio/script/runner -eproduction
 ## incomingd.rb
 ## Login : <opp2@opp2-devsrv>
 ## Started on  Thu Dec  3 14:26:37 2009 opp2
@@ -23,16 +23,26 @@
 ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##
 
+#require 'logger'
+
+#$log = Logger.new("#{RAILS_ROOT}/log/pure-auth.log")
+#$log = Logger.new(STDOUT)
+#$log.level = Logger::INFO
+
+#$log.debug "#{ENV['AUTHD_ACCOUNT']}::#{ENV['AUTHD_PASSWORD']}"
+#$log.debug `env`
+
 u = User.find_by_username(ENV['AUTHD_ACCOUNT'])
 
 if u.valid_password?(ENV['AUTHD_PASSWORD']) and u.ftp_account_id != 0
-  p 'auth_ok:1'
-  p "uid:#{RADIO_CONFIG[:ftp_id]}"
-  p "gid:#{RADIO_CONFIG[:ftp_gid]}"
-  p "dir:#{RADIO_CONFIG[:ftp_root]}/#{u.username}/./"
-  p "user_quota_size:#{u.ftp_account.quota}"
-  p "per_user_max:#{u.ftp_account.sessions}"
+  puts 'auth_ok:1'
+  puts "uid:#{RADIO_CONFIG[:ftp_id]}"
+  puts "gid:#{RADIO_CONFIG[:ftp_gid]}"
+  puts "dir:#{RADIO_CONFIG[:ftp_root]}/#{u.username}/./"
+  puts "user_quota_size:#{u.ftp_account.quota}"
+  puts "per_user_max:#{u.ftp_account.sessions}"
 else
-  p 'auth_ok:0'
+  puts 'auth_ok:0'
 end
 
+puts 'end'
