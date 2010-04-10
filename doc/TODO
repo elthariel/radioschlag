@@ -1,0 +1,84 @@
+#
+# TODO file for radio schlag
+#
+
+Besoins sur le model :
+
+- Fichiers
+  - X Une version simple de cette table sers a gerer les fichiers recemment uploaded, en attente de conversion -> IncomingAudioFile
+  - X Fichiers ont un proprietaire, par defaut, cet user est l'admin
+  - X Fichiers ont un style, un type et une metric de lecture
+
+- Utilisateurs
+  - X Un nom/pass/mail/etc
+  - X Un role (root, admin, modo, contributeur, normal?)
+    - X Root, tout les droits,? including system stuff
+    - X Admin tout les droits ?
+    - X Moderateur, supprimer certains contenus
+    - X Contributeur, a un compte ftp et peut uploader
+      -> X Quota
+    - #Normal aucun droit particulier, genre juste comment
+  - X root > admin > modo > contrib > normal ?
+
+- X PureFtpd integration
+  - X Script de login (pure-auth)
+  - X Script d'upload (pute-upload)
+
+- Programmation
+  - X Plage horaire
+  - X Une plage horaire a un programme
+  - X Une plage horaires a plusieurs contributeurs
+  - X Un programme a plusieurs playlists
+  - X Plusieurs mode de lecture de playlists
+    - X Lecture dans l'ordre, type 'order'
+    - X 'Random' avec mise a jour de la metric pour que les tracks soient jouees avec equite.
+  - x Plusieurs types de playlists
+    - X Playlist de tracks
+    - X Playlist de type/style
+  - X 'Daemon' qui feed un liquidsoap unix socket de request pour genere la programmation
+
+--------------------------
+
+Tytouf
+
+  - X Pouvoir previews les mp3
+  - et les playlists
+  - X Proprietaire du fichier? Comment voir tout les fichiers qui restent a classer ?
+  - W Dans la liste des fichiers audio, on ne peut pas cliker sur edit, ca passe en mode drag and drop
+
+- Gestion de la programmation
+  - X Des plages horaires associees a un programme.
+  - X Seuls root & admin ont les droits pour toucher aux plages horaires et a l'association du programme
+  - X 2 types de playlist
+    - X Specifier directement les audiofiles
+      - X 2 facon de jouer les playlists
+        - X Random ameliore
+        - X Joue dans l'ordre
+    - X Specifier par types/style
+      - X Joue en random ameliore de la mort
+
+
+---------------------------
+
+- Scheduler
+  - Insert Jingles
+  - X Kan on genere en random on veut qu'il ne mette pas deux fois les
+    memes tracks dans une seule playlist, mais il fo faire attention a
+    ne pas tourner en boucle dans le cas de pool trop petit
+  - X Gestion du live :
+    - X Une personne peut se connecter si elle a des droits sur le
+      programme, que la plage horaire autorise le live et si il est
+      moins de 2 minutes avant la fin de la plage horaire.
+    - X A la fin de chaque plage horaire, on deconnecte les gens qui
+      sont en live.
+
+  - X un pool a desormais un membre length qui represente la longueur du
+  pool en seconde, et si le pool et plus long que la longueur de la
+  playlist demandee, alors on peut avoir une playlist sans doublon
+  - X gerer les playlists qui ont plus de 100 fichiers -> pas assez de rid
+
+
+- Model
+  - Un programme ne devrait avoir qu'une seule playlist, et on devrait
+    pouvoir switcher entre les playlists des gens qui sont assignees
+    sur le programme. (passer de many to many a one to one)

@@ -1,8 +1,9 @@
 class PlaylistsController < ApplicationController
-#  filter_access_to :add_file, :attribute_check => true, :load_method => lambda {}
-#  filter_resource_access :load_method => :load_plasdaylist
-  filter_access_to :index, :show, :new, :create, :edit, :update, :destroy, :add_style, :remove_style, :update_style_metric
-  filter_access_to :add_file, :sort, :remove_file, :load_method => :load_for_ajax
+  filter_access_to :index
+  filter_access_to :show, :new, :create, :edit, :update, :destroy, :add_style, :remove_style, :update_style_metric, :attribute_check => true
+  filter_access_to :add_file, :sort_file, :remove_file, :load_method => :load_for_ajax
+
+  helper AudioFilesHelper
 
   def index
     @playlists = Playlist.all()
@@ -14,6 +15,7 @@ class PlaylistsController < ApplicationController
 
   def new
     @playlist = Playlist.new
+    @playlist.user_id = current_user.id
   end
 
   def create

@@ -43,8 +43,8 @@ authorization do
   role :moderateur do
     includes :contributeur
 
-    has_permission_on :incoming_audio_files, :to => [:destroy]
-    has_permission_on :audio_files, :to => :destroy
+    has_permission_on :incoming_audio_files, :to => :destroy
+    has_permission_on :audio_files, :to => :manage
     has_permission_on :playlist_assignments, :to => :manage
   end
 
@@ -72,14 +72,15 @@ authorization do
 
     # Les contributeurs peuvent gerer des playlists
     has_permission_on :playlists, :to => :create
-    has_permission_on :playlists, :to => [:manage, :add_file, :sort, :remove_file, :add_style, :remove_style, :update_style_metric] do
+    has_permission_on :playlists do
+      to :manage, :add_file, :sort_file, :remove_file, :add_style, :remove_style, :update_style_metric
       if_attribute :user => is {user}
     end
 
     # Les contributeurs peuvent ajouter des playlist a leur programes
-    has_permission_on :playlist_assignments, :to => :manage do
-      if_attribute :users => contains {user}
-    end
+    #has_permission_on :playlist_assignments, :to => :manage do
+    #  if_attribute :users => contains {user}
+    #end
   end
 
   role :guest do

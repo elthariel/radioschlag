@@ -19,7 +19,8 @@ pure-upload script in script directory (or to fix that issue.)
   - Declarative_authorization
   - Formtastic
   - Acts_as_list
-  - Rspec (still not used, but already a dependcy :-/)
+  - Rspec (still not used, but already a dependency :-/)
+  - will_paginate
 
 ## Configuration
 

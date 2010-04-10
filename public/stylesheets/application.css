@@ -19,7 +19,9 @@ a {
 }
 
 #container {
-  width: 75%;
+  width: 70%;
+  position: absolute;
+  left: 20%;
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
@@ -81,12 +83,16 @@ a {
 }
 
 #user_nav {
-    float: right;
-    font-size: 12px;
+  float: right;
+  font-size: 12px;
+  background-color: #eee;
+  border: solid 1px #aaa;
+  padding: 3px;
 }
 
 #nav {
-<!--   float: left; -->
+  position: fixed;
+  width: 16%;
   margin-right: 10px;
   margin-top: 10px;
   padding-right: 15px;
@@ -95,7 +101,7 @@ a {
 #main_nav {
   font-size: 12px;
   background-color: #eee;
-  border: solid 1px #aaa;
+  border: solid 1px #000;
   margin-right: 10px;
   margin-top: 10px;
   padding-right: 15px;
@@ -107,7 +113,7 @@ a {
   margin-top: 10px;
   padding-right: 15px;
   background-color: #eee;
-  border: solid 1px #aaa;
+  border: solid 1px #000;
 }
 
 .nav_item {
@@ -128,3 +134,4 @@ a {
   cursor: move;
   color: #777
 }
+

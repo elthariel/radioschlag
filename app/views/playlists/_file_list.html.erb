@@ -6,12 +6,12 @@
       <%= link_to_remote("Supprimer", :url => {:action => :remove_file, :playlist_id => @playlist.id, :id => "audio_file_#{f.id}"})%>
       <%= h f.audio_file_type.name %> ::
       <%= h f.audio_file_style.name %> ::
-      <%= h f.path %>
+      <%= audiofile_pretty_printer f %>
     <% end %>
     <% end %>
   <ul>
 </p>
 
 <%= sortable_element('audio_files_list', :handle => "handle",
-:url => {:action => 'sort', :playlist_id => @playlist.id}) %>
+:url => {:action => 'sort_file', :playlist_id => @playlist.id}) %>
 

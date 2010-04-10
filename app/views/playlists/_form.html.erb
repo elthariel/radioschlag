@@ -16,5 +16,9 @@
     <%= f.label :playlist_player_id %><br />
     <%= collection_select(:playlist, :playlist_player_id, PlaylistPlayer.all, :id, :name) %>
   </p>
+  <p>
+    <%= f.label 'Proprietaire' %><br />
+    <%= collection_select(:playlist, :user_id, User.all, :id, :username) %>
+  </p>
   <p><%= f.submit "Submit" %></p>
 <% end %>

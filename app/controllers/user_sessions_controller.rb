@@ -6,10 +6,21 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Vous etes connectes"
-      redirect_to root_url
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Vous etes connectes"
+          redirect_to root_url
+        end
+        format.json {render :nothing => true, :status => 200}
+      end
     else
-      render :action => 'new'
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Login et/ou Password incorrect(s)"
+          redirect_to login_url
+        end
+        format.json {render :nothing => true, :status => 503}
+      end
     end
   end
 

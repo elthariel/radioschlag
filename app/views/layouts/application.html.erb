@@ -8,6 +8,58 @@
     <%= yield(:head) %>
   </head>
   <body>
+
+    <div id="nav">
+      <div id="main_nav">
+        <ul> Menu
+          <li><%= link_to 'Fichiers audios', audio_files_path %></li>
+          <li><%= link_to 'Queue de conversion', incoming_audio_files_path %></li>
+          <li><%= link_to 'Styles', audio_file_styles_path %></li>
+          <li><%= link_to 'Planning', slots_path %> </li>
+          <li><%= link_to 'Programmes', programs_path %></li>
+          <li><%= link_to 'Playlists', playlists_path %></li>
+          <li><%= link_to 'Utilisateurs', users_path %></li>
+        </ul>
+      </div>
+
+      <% if current_user %>
+      <div class="nav_group">
+        <ul> Programmes
+          <% for p in current_user.programs %>
+          <li class="nav_item" id="program_<%=p.id%>"><%= link_to p.name, program_path(p) %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <%= sortable_element("playlists") %>
+
+      <% end %>
+
+      <% if current_user %>
+      <div class="nav_group" id=''>
+        <ul id="playlists"> Playlists
+          <% for p in current_user.playlists %>
+          <li class="nav_item" id="playlist_<%=p.id%>"><%= link_to p.name, playlist_path(p) %></li>
+          <% if p.playlist_type.name == 'audiofile' %>
+          <%= drop_receiving_element("playlist_#{p.id}",
+              :url => {:controller => 'playlists', :action => 'add_file', :playlist_id => p.id}) %>
+          <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <% if current_user %>
+      <div class="nav_group" id=''>
+        <ul id="playlists"> Taches
+          <li><%= link_to "Fichier a trier : #{files_to_sort}", audio_files_path(:user => {:id => current_user.id} ,
+            :audio_file_type => {:id => 1}, :audio_file_style => { :id => 1 } ) %></li>
+        </ul>
+      </div>
+      <% end %>
+
+    </div>
+
     <div id="container">
       <div id="user_nav">
         <% if current_user %>
@@ -16,46 +68,6 @@
         <% else %>
           <%= link_to "Creer un compte", new_user_path %> |
           <%= link_to "Connection", login_path %>
-        <% end %>
-      </div>
-      <div id="nav">
-        <div id="main_nav">
-          <ul> Menu
-            <li><%= link_to 'Fichiers audios', audio_files_path %></li>
-            <li><%= link_to 'Queue de conversion', incoming_audio_files_path %></li>
-            <li><%= link_to 'Styles', audio_file_styles_path %></li>
-            <li><%= link_to 'Planning', slots_path %> </li>
-            <li><%= link_to 'Programmes', programs_path %></li>
-            <li><%= link_to 'Playlists', playlists_path %></li>
-            <li><%= link_to 'Utilisateurs', users_path %></li>
-          </ul>
-        </div>
-
-        <% if current_user %>
-        <div class="nav_group">
-          <ul id="playlists"> Playlists
-          <% for p in current_user.playlists %>
-            <li class="nav_item" id="playlist_<%=p.id%>"><%= link_to p.name, playlist_path(p) %></li>
-            <% if p.playlist_type.name == 'audiofile' %>
-              <%= drop_receiving_element("playlist_#{p.id}",
-                  :url => {:controller => 'playlists', :action => 'add_file', :playlist_id => p.id}) %>
-            <% end %>
-          <% end %>
-          </ul>
-        </div>
-        <% end %>
-
-        <% if current_user %>
-        <div class="nav_group">
-          <ul> Programmes
-          <% for p in current_user.programs %>
-            <li class="nav_item" id="program_<%=p.id%>"><%= link_to p.name, program_path(p) %></li>
-          <% end %>
-          </ul>
-        </div>
-
-        <%= sortable_element("playlists") %>
-
         <% end %>
       </div>
 

@@ -19,7 +19,9 @@ slot = Slot.first(:conditions => "start < '#{now}' AND end > '#{now}'")
 user = User.find_by_username(ARGV[0])
 
 # Check the slot exists and allows live as well as check challenge credentials
-if (!slot or !slot.allow_live or !user or !user.valid_password?(ARGV[1]))
+# We also deny login if this is the end of the slot
+if (!slot or !slot.allow_live or !user or !user.valid_password?(ARGV[1])
+    or now >= slot.end - 3)
   puts "false"
   exit(0)
 end

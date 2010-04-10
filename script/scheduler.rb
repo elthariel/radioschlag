@@ -23,17 +23,25 @@
 ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##
 
+require 'rubygems'
 require 'radio/timer'
 require 'radio/liquidsoap'
+require 'radio/scheduler'
+require 'radio/pool'
+
 
 t = Radio::Timer.new
-l = Radio::LiquidSoap.new('radio.sock')
+l = Radio::LiquidSoap.new(SCHEDULER_CONFIG[:liq_socket])
+s = Radio::Scheduler.new(l)
+s.tick
 
-t.seconds.connect Proc.new {puts "tick #{Time.now}"; true}
-t.minutes.connect Proc.new {puts "minute tick"; true}
+#t.seconds.connect Proc.new {puts "tick #{Time.now}"; true}
+#t.minutes.connect Proc.new {s.tick}
+t.seconds.connect Proc.new {s.tick}
+
+
 
 t.run
-
 
 
 

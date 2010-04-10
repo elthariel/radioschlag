@@ -1,5 +1,19 @@
 <% title "Fichiers sons" %>
 
+<p>
+<% form_for :audio_files, :url => audio_files_path, :html => {:method => :get} do |form| %>
+  Filter les fichiers affiches :
+  <%= collection_select(:user, :username, User.all, :username, :username) %>
+  <%= collection_select(:audio_file_type, :id, AudioFileType.all, :id, :name) %>
+  <%= collection_select(:audio_file_style, :id, AudioFileStyle.all, :id, :name) %>
+  <%= submit_tag 'Appliquer' %>
+<% end %>
+</p>
+
+<p>
+<%= will_paginate @audio_file %>
+</p>
+
 <table>
   <tr>
 <!--     <th>X</th> -->
@@ -13,14 +27,15 @@
   <% for audio_file in @audio_files %>
     <tr id="audio_file_<%= audio_file.id%>">
 <!--       <td>drap</td> -->
-      <td><%=h audio_file.user.username %></td>
-      <td><%=h audio_file.path %></td>
-      <td><%=h audio_file.audio_file_type.name %></td>
-      <td><%=h audio_file.audio_file_style.name %></td>
-      <td><%=h seconds_to_string(audio_file.duration) %></td>
-      <td><%=h audio_file.metric %></td>
+      <td><%= h audio_file.user.username %></td>
+      <td><%= audiofile_pretty_printer audio_file %></td>
+      <td><%= h audio_file.audio_file_type.name %></td>
+      <td><%= h audio_file.audio_file_style.name %></td>
+      <td><%= h seconds_to_string(audio_file.duration) %></td>
+      <td><%= h audio_file.metric %></td>
       <td><%= link_to "Edition", edit_audio_file_path(audio_file) %></td>
       <td><%= link_to "Supprimer", audio_file, :confirm => 'Etes vous surs de vouloir supprimer ce fichier ?', :method => :delete %></td>
+      <td><%= audio_tag audio_file %></td>
     </tr>
     <%= draggable_element("audio_file_#{audio_file.id}", :ghosting => true,
                           :revert => true) %>
