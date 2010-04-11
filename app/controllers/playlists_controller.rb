@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
-  filter_access_to :index
-  filter_access_to :show, :new, :create, :edit, :update, :destroy, :add_style, :remove_style, :update_style_metric, :attribute_check => true
+  filter_access_to :index, :new, :create
+  filter_access_to :show, :edit, :update, :destroy, :add_style, :remove_style, :update_style_metric, :attribute_check => true
   filter_access_to :add_file, :sort_file, :remove_file, :load_method => :load_for_ajax
 
   helper AudioFilesHelper
