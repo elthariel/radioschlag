@@ -43,7 +43,7 @@ class Scheduler
 
     # The next playlist at the construction is the playlist that should be played now.
     now = Timer.now
-    slot = ::Slot.find(:first, :conditions => ['start <= ? AND end > ?', now, now])
+    slot = ::Slot.find(:first, :conditions => ['slots.start <= ? AND slots.end > ?', now, now])
     @next = Task.new(slot, get_playlist_from_slot(slot))
   end
 

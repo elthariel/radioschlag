@@ -23,18 +23,28 @@
 ## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##
 
-if ARGV.length != 1
-  p "Script called with wrong arguments"
+require 'logger'
+
+$log = Logger.new("#{RAILS_ROOT}/log/pure-upload.log")
+#$log = Logger.new(STDOUT)
+$log.level = Logger::DEBUG
+
+
+if ARGV.length < 1
+  $log.error "Script called with wrong arguments"
+  $log.debug ARGV
   exit(0)
 end
 
-path = File.expand_path(ARGV[0])
+path = File.expand_path(ARGV[-1])
 
 # Discard if the script is not a file
 if !File.readable?(path)
-  p "#{path} is either not a file or not readble"
+  $log.error "#{path} is either not a file or not readble"
   exit(0)
 end
+
+$log.info "Received: #{path}"
 
 ftp_path = RADIO_CONFIG[:ftp_root]
 root_path = RADIO_CONFIG[:audio_root]
@@ -48,7 +58,8 @@ if path[0, ftp_path.length] == ftp_path
   # Determining the owner of the file
   relative_path = path[ftp_path.length + 1, path.length]
   infos = relative_path.split('/')
-  user_id = User.find_by_name(infos[0]).id
+  $log.debug "Da user: #{infos[0]}"
+  user_id = User.find_by_username(infos[0]).id
 
 elsif path[0, root_path.length] == root_path
 
@@ -67,7 +78,7 @@ else
   exit(0)
 end
 
-p "Creating incoming audio file #{type_id}:#{style_id}:#{user_id}"
+$log.info "Creating incoming audio file #{type_id}:#{style_id}:#{user_id}"
 IncomingAudioFile.create(:path => path, :user_id => user_id,
                          :audio_file_type_id => type_id,
                          :audio_file_style_id => style_id)

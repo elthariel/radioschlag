@@ -19,7 +19,7 @@ module AudioFilesHelper
 
     url = RADIO_CONFIG[:http_listen]
     url += '/' + folder + '/' + fpath
-    tag = "<audio src=\"#{url}\" controls=\"controls\">"
+    tag = "<audio src=\"#{url}\" controls=\"controls\" preload=\"none\">"
     tag += "Your browser does not support the audio element. "
     tag += "Install a recent Firefox or Chromium version"
     tag += " </audio>"

@@ -3,9 +3,9 @@
 <p>
 <% form_for :audio_files, :url => audio_files_path, :html => {:method => :get} do |form| %>
   Filter les fichiers affiches :
-  <%= collection_select(:user, :username, User.all, :username, :username) %>
-  <%= collection_select(:audio_file_type, :id, AudioFileType.all, :id, :name) %>
-  <%= collection_select(:audio_file_style, :id, AudioFileStyle.all, :id, :name) %>
+  <%= collection_select(:user, :username, User.all, :username, :username, {:include_blank => true}) %>
+  <%= collection_select(:audio_file_type, :id, AudioFileType.all, :id, :name, {:include_blank => true}) %>
+  <%= collection_select(:audio_file_style, :id, AudioFileStyle.all, :id, :name, {:include_blank => true}) %>
   <%= submit_tag 'Appliquer' %>
 <% end %>
 </p>

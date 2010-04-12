@@ -28,7 +28,8 @@ production:
   sox_fx: gain -1 rate -v -a 44100 dither -s
   sox_fx_low: delay 0 0 reverb wet-gain -30
   ftp_root: /home/radio-schlag/new_radio/data/upload
-  ftp_id: 1002
+  ftp_id: 1003
   ftp_gid: 1002
   ftp_default_quota: 104857600
   ftp_sessions: 3
+  http_listen: http://radio.schlag.fr/audio

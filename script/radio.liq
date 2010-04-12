@@ -1,4 +1,4 @@
-#! /usr/bin/liquidsoap -v --debug
+#! /usr/local/bin/liquidsoap -v
 
 %include "config/config.liq"
 
@@ -42,16 +42,16 @@ output.icecast.vorbis(
   radio)
 
 # Mp3 output for mac and flash player :(
-# output.icecast.mp3(
-#   host = stream_host,
-#   port = stream_port,
-#   user = src_login_mp3,
-#   password = src_passwd,
-#   mount = "radio-schlag.mp3",
-#   genre = "FreeTekno",
-#   description = "Radio Schlag | FreeTekno Culture",
-#   url="http://radio.schlag.fr",
-#   bitrate = 96,
-#   saw())
+output.icecast.mp3(
+   host = stream_host,
+   port = stream_port,
+   user = src_login_mp3,
+   password = src_passwd,
+   mount = "radio-schlag.mp3",
+   genre = "FreeTekno",
+   description = "Radio Schlag | FreeTekno Culture",
+   url="http://radio.schlag.fr",
+   bitrate = 96,
+   radio)
 
 
