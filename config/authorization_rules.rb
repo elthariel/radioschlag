@@ -52,7 +52,7 @@ authorization do
     includes :guest
 
     # Fichier audios
-    has_permission_on :audio_files, :to => :manage do
+    has_permission_on :audio_files, :to => [:manage, :mass_update] do
       if_attribute :user => is {user}
     end
 

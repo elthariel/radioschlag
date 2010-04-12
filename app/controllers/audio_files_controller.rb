@@ -1,5 +1,6 @@
 class AudioFilesController < ApplicationController
   filter_resource_access
+  filter_access_to :mass_update
 
   def index
 
@@ -30,6 +31,14 @@ class AudioFilesController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def mass_update
+    cond = index_conditions(params)
+
+    AudioFile.update_all(cond, :id => params[:audio_files_ids])
+
+    redirect_to audio_files_url
   end
 
   def destroy
