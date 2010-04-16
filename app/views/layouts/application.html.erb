@@ -52,7 +52,7 @@
       <% if current_user %>
       <div class="nav_group" id=''>
         <ul id="playlists"> Taches
-          <li><%= link_to "Fichier a trier : #{files_to_sort}", audio_files_path(:user => {:id => current_user.id} ,
+          <li><%= link_to "Fichier a trier : #{files_to_sort}", audio_files_path(:user => {:username => current_user.username},
             :audio_file_type => {:id => 1}, :audio_file_style => { :id => 1 } ) %></li>
         </ul>
       </div>

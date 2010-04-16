@@ -39,7 +39,7 @@ if u.valid_password?(ENV['AUTHD_PASSWORD']) and u.ftp_account_id != 0
   puts "uid:#{RADIO_CONFIG[:ftp_id]}"
   puts "gid:#{RADIO_CONFIG[:ftp_gid]}"
   puts "dir:#{RADIO_CONFIG[:ftp_root]}/#{u.username}/./"
-  puts "user_quota_size:#{u.ftp_account.quota}"
+  puts "user_quota_size:#{u.ftp_account.quota * 1024 * 1024}"
   puts "per_user_max:#{u.ftp_account.sessions}"
 else
   puts 'auth_ok:0'

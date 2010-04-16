@@ -10,7 +10,7 @@ development:
   ftp_root: /home/elthariel/code/radio/upload
   ftp_id: 1000
   ftp_gid: 1000
-  ftp_default_quota: 104857600
+  ftp_default_quota: 100
   ftp_sessions: 3
   http_listen: http://10.10.2.247:4242/audio
 
@@ -30,6 +30,6 @@ production:
   ftp_root: /home/radio-schlag/new_radio/data/upload
   ftp_id: 1003
   ftp_gid: 1002
-  ftp_default_quota: 104857600
+  ftp_default_quota: 100
   ftp_sessions: 3
   http_listen: http://radio.schlag.fr/audio

@@ -18,7 +18,7 @@ module ApplicationHelper
   def files_to_sort
     if current_user
       AudioFile.all(:conditions => {:audio_file_style_id => 1,
-                    :audio_file_type_id => 1}).length
+                    :audio_file_type_id => 1, :user_id => current_user.id}).length
     end
   end
 end
