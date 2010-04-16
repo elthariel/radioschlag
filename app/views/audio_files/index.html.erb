@@ -3,9 +3,9 @@
 <p>
 <% form_for :audio_files, :url => audio_files_path, :html => {:method => :get} do |form| %>
   Filter les fichiers affiches :
-  <%= collection_select(:user, :username, User.all, :username, :username, {:include_blank => true}) %>
-  <%= collection_select(:audio_file_type, :id, AudioFileType.all, :id, :name, {:include_blank => true}) %>
-  <%= collection_select(:audio_file_style, :id, AudioFileStyle.all, :id, :name, {:include_blank => true}) %>
+  <%= collection_select(:user, :username, User.all(:order => 'username'), :username, :username, {:include_blank => 'user'}) %>
+  <%= collection_select(:audio_file_type, :id, AudioFileType.all(:order => 'name'), :id, :name, {:include_blank => 'type'}) %>
+  <%= collection_select(:audio_file_style, :id, AudioFileStyle.all(:order => 'name'), :id, :name, {:include_blank => 'style'}) %>
   <%= submit_tag 'Appliquer' %>
 <% end %>
 </p>
@@ -29,7 +29,7 @@
   <% for audio_file in @audio_files %>
     <tr id="audio_file_<%= audio_file.id%>">
 <!--       <td>drag</td> -->
-      <td><%= check_box_tag "audio_files_ids[]", audio_file.id %></td>
+      <td><%= check_box_tag "audio_files_ids[]", audio_file.id, false, :class => 'audio_file_checkbox' %></td>
       <td><%= h audio_file.user.username %></td>
       <td><%= audiofile_pretty_printer audio_file %></td>
       <td><%= h audio_file.audio_file_type.name %></td>
@@ -45,10 +45,14 @@
   <% end %>
 </table>
 
-  Changer les attributs des elements selectionnes:
-  <%= collection_select(:audio_file_type, :id, AudioFileType.all, :id, :name, {:include_blank => true}) %>
-  <%= collection_select(:audio_file_style, :id, AudioFileStyle.all, :id, :name, {:include_blank => true}) %>
-  <%= submit_tag 'Appliquer' %>
+<%= link_to_function 'Tous ', "$$('input.audio_file_checkbox').each(function(checkbox) { checkbox.checked = true; });" %> ||
+<%= link_to_function ' Aucun', "$$('input.audio_file_checkbox').each(function(checkbox) { checkbox.checked = false; });" %>
 
+<p>
+  Changer les attributs des elements selectionnes:
+  <%= collection_select(:audio_file_type, :id, AudioFileType.all(:order => 'name'), :id, :name, {:include_blank => 'type'}) %>
+  <%= collection_select(:audio_file_style, :id, AudioFileStyle.all(:order => 'name'), :id, :name, {:include_blank => 'style'}) %>
+  <%= submit_tag 'Appliquer' %>
+</p>
 <% end %>
 

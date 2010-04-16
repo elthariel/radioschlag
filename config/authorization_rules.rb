@@ -81,6 +81,11 @@ authorization do
     #has_permission_on :playlist_assignments, :to => :manage do
     #  if_attribute :users => contains {user}
     #end
+
+    has_permission_on :users, :to => :read
+    has_permission_on :programs, :to => :read
+    has_permission_on :slots, :to => :read
+    has_permission_on :program_assignments, :to => :read
   end
 
   role :guest do
