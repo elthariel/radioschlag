@@ -15,7 +15,7 @@
     <th>Programme</th>
     <th>Description</th>
     <th>Debut</th>
-    <th>Fine</th>
+    <th>Fin</th>
     <th>Autorise le live</th>
   </tr>
   <% for slot in @slots %>
@@ -23,8 +23,8 @@
       <td><%=h slot.name %></td>
       <td><%=h slot.program.name %></td>
       <td><%=h slot.program.desc %></td>
-      <td><%=h slot.start %></td>
-      <td><%=h slot.end %></td>
+      <td><%=slot_time_pretty_printer slot.start %></td>
+      <td><%=slot_time_pretty_printer slot.end %></td>
       <td><%=h slot.allow_live %></td>
       <td><%= link_to "Voir", slot %></td>
       <td><%= link_to "Editer", edit_slot_path(slot) %></td>

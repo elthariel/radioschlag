@@ -10,7 +10,7 @@ def liveauth(login, password) =
   # "true" of "false"
   #
   # First call the script
-  ret = get_process_lines("./script/runner ./script/harbor-auth #{quote(login)} #{quote(password)}")
+  ret = get_process_lines("./script/runner -eproduction ./script/harbor-auth #{quote(login)} #{quote(password)}")
   # Then get the first line of its output
   ret = list.hd(ret)
   # Finally returns the boolean represented

@@ -2,7 +2,7 @@ class SlotsController < ApplicationController
   filter_resource_access
 
   def index
-    @slots = Slot.all
+    @slots = Slot.all(:order => 'start')
   end
 
   def show
