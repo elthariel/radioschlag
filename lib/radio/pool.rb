@@ -45,7 +45,7 @@ class PoolFactory
   def make(active_record_playlist_object)
     pls = active_record_playlist_object
 
-    $long.debug "PoolFactory: New pool"
+    $log.debug "PoolFactory: New pool"
 
     begin
       maker_name = pls.playlist_type.name.capitalize + 'PoolMaker'
