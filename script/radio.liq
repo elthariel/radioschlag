@@ -1,4 +1,4 @@
-#! /usr/local/bin/liquidsoap -v
+#! /usr/bin/env liquidsoap
 
 %include "config/config.liq"
 
@@ -41,8 +41,8 @@ output.icecast.vorbis(
   quality = 3.,
   radio)
 
-# Mp3 output for mac and flash player :(
-output.icecast.mp3(
+# Mp3 output for mac and flash player :( and for android player :)
+output.icecast.lame(
    host = stream_host,
    port = stream_port,
    user = src_login_mp3,
@@ -53,5 +53,4 @@ output.icecast.mp3(
    url="http://radio.schlag.fr",
    bitrate = 96,
    radio)
-
 

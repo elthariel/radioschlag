@@ -30,22 +30,29 @@ require 'radio/liquidsoap'
 require 'radio/scheduler'
 require 'radio/pool'
 
-$log = Logger.new SCHEDULER_CONFIG[:logfile]
+$log = Logger.new RAILS_ROOT + '/' +  SCHEDULER_CONFIG[:logfile]
 $log.level = Logger.const_get SCHEDULER_CONFIG[:loglevel].to_sym
+$log.progname = 'scheduler.rb'
+
+begin
 
 t = Radio::Timer.new
 l = Radio::LiquidSoap.new(SCHEDULER_CONFIG[:liq_socket])
 s = Radio::Scheduler.new(l)
 s.tick
 
+$log.info "Starting RadioSchlag Scheduler"
+
 #t.seconds.connect Proc.new {puts "tick #{Time.now}"; true}
 t.minutes.connect Proc.new {s.tick}
 #t.seconds.connect Proc.new {s.tick}
 
-
-
 t.run
 
+$log.info "Exiting normally from RadioSchlag Scheduler"
 
-
-
+rescue => exception
+  $log.error exception.message
+  $log.error exception.backtrace.join("\n")
+  puts "Exiting anormaly from RadioSchlag Scheduler"
+end

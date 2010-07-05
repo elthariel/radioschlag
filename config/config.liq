@@ -21,6 +21,7 @@ log_path = "log/radio.log"
 
 
 set("log.file.path", log_path)
+set("log.stdout",true)
 set("log.level", 4)
 
 set("harbor.bind_addr","0.0.0.0")

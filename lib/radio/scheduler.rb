@@ -71,9 +71,9 @@ class Scheduler
 
   def manage_playlist_generation
     if (@next.slot.start == 0 and 10080 - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]) or @next.slot.start - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]
-      puts "Scheduler: Generating a new playlist, for slot #{@next.slot.name}"
+      $log.info "Scheduler: Generating a new playlist, for slot #{@next.slot.name}"
       @current_playlist = generate_playlist(@next)
-      puts "Scheduler: The effective length of the playlist is #{@current_playlist.length / 60.0} minutes"
+      $log.info "Scheduler: The effective length of the playlist is #{@current_playlist.length / 60.0} minutes"
       @next = next_task
     end
   end
@@ -82,7 +82,7 @@ class Scheduler
     # At the end of every slot, we double kick (to be sure,
     # and because it's funny) client connected to harbor live input.
     if Timer.now == @next.slot.start - 1 or Timer.now == @next.slot.start - 2
-      puts "Scheduler: Kick harbor live source"
+      $log.info "Scheduler: Kick harbor live source"
       @liq.send(SCHEDULER_CONFIG[:liq_live]).kick
     end
   end
@@ -92,7 +92,7 @@ class Scheduler
     if Timer.now > @next.slot.start and Timer.now < @next.slot.end
       length -= Timer.now - @next.slot.start
     end
-    puts "Scheduler: New playlist is #{length} minutes long"
+    $log.info "Scheduler: New playlist is #{length} minutes long"
     @playlist_factory.make(@next.playlist, length * 60)
   end
 
@@ -101,7 +101,7 @@ class Scheduler
     queue = @liq.send(SCHEDULER_CONFIG[:liq_queue])
     pls.files.each do |audiofile|
         # When debugging playlist generation
-        #puts "#{audiofile.path}"
+        $log.debug "#{audiofile.path}"
         queue.push "#{audiofile.path}"
       end
   end
