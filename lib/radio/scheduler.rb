@@ -70,12 +70,7 @@ class Scheduler
   end
 
   def manage_playlist_generation
-    schedule_new_slot = false
-
     if (@next.slot.start == 0 and 10080 - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]) or @next.slot.start - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]
-      schedule_new_slot = true
-    end
-    if schedule_new_slot
       puts "Scheduler: Generating a new playlist, for slot #{@next.slot.name}"
       @current_playlist = generate_playlist(@next)
       puts "Scheduler: The effective length of the playlist is #{@current_playlist.length / 60.0} minutes"
@@ -94,7 +89,7 @@ class Scheduler
 
   def generate_playlist(task)
     length = @next.slot.end - @next.slot.start
-    if Timer.now > @next.slot.start
+    if Timer.now > @next.slot.start and Timer.now < @next.slot.end
       length -= Timer.now - @next.slot.start
     end
     puts "Scheduler: New playlist is #{length} minutes long"

@@ -4,6 +4,8 @@ development:
   liq_queue: rq
   liq_live: live
   audiofile_metric_increment: 0.3
+  logfile: log/scheduler_dev.log
+  loglevel: DEBUG
 
 test:
   playlist_lookahead: 10
@@ -11,6 +13,8 @@ test:
   liq_queue: rq
   liq_live: live
   audiofile_metric_increment: 0.3
+  logfile: log/scheduler_test.log
+  loglevel: DEBUG
 
 production:
   playlist_lookahead: 10
@@ -18,3 +22,5 @@ production:
   liq_queue: rq
   liq_live: live
   audiofile_metric_increment: 0.3
+  logfile: log/scheduler_prod.log
+  loglevel: DEBUG

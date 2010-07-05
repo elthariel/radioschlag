@@ -24,11 +24,14 @@
 ##
 
 require 'rubygems'
+require 'logger'
 require 'radio/timer'
 require 'radio/liquidsoap'
 require 'radio/scheduler'
 require 'radio/pool'
 
+$log = Logger.new SCHEDULER_CONFIG[:logfile]
+$log.level = Logger.const_get SCHEDULER_CONFIG[:loglevel].to_sym
 
 t = Radio::Timer.new
 l = Radio::LiquidSoap.new(SCHEDULER_CONFIG[:liq_socket])
