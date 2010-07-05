@@ -48,11 +48,11 @@ class PlaylistFactory
     pls_db = active_record_playlist_object
     pool = @pool_factory.make(pls_db)
 
-    puts "PlaylistFactory: New playlist"
+    $log.debug "PlaylistFactory: New playlist #{pls_db.name}"
 
 #    begin
       maker_name = pls_db.playlist_player.name.capitalize + 'PlaylistMaker'
-      puts "PlaylistFactory: Using this maker: #{maker_name}"
+    $log.debug "PlaylistFactory: Using this maker: #{maker_name}"
       strategy = Radio.const_get(maker_name.to_s).new
     # rescue
     #   puts "Playlist Maker not found, using the default one, might not work"

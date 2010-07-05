@@ -70,7 +70,7 @@ class RandomPlaylistMaker
     pls = Array.new
     length = 0
 
-    puts "RandomPlaylistMaker: Generating new playlist"
+    $log.debug "RandomPlaylistMaker: Generating new playlist"
 
     poolmap = build_itermediate_filelist(pool)
     tree = build_probability_tree(poolmap)

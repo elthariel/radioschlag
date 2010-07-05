@@ -34,7 +34,7 @@ class TypestylePoolMaker
     pool = Array.new
     len = 0
 
-    puts "TypestylePoolMaker: Generating a new pool"
+    $log.debug "TypestylePoolMaker: Generating a new pool"
 
     # Refer to doc/METRIC for so explanation of the use of the metric
     pls.type_style_assignments.each do |ts|

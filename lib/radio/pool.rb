@@ -45,14 +45,14 @@ class PoolFactory
   def make(active_record_playlist_object)
     pls = active_record_playlist_object
 
-    puts "PoolFactory: New pool"
+    $long.debug "PoolFactory: New pool"
 
     begin
       maker_name = pls.playlist_type.name.capitalize + 'PoolMaker'
-      puts "PoolMaker: Using this maker: #{maker_name}"
+      $log.debug "PoolMaker: Using this maker: #{maker_name}"
       strategy = Radio.const_get(maker_name.to_s).new
     rescue
-      puts "Pool Maker not found, using the default one, might not work"
+      $log.warn "Pool Maker not found, using the default one, might not work #{pls.name}:##{pls.id}"
       strategy = AudiofilePoolMaker.new
     end
 
