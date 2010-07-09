@@ -4,11 +4,13 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
+    <th>Playlist</th>
   </tr>
   <% for program in @programs %>
     <tr>
       <td><%=h program.name %></td>
       <td><%=h program.desc %></td>
+      <td><%=h program.playlist.name %></td>
       <td><%= link_to "Voir", program %></td>
       <td><%= link_to "Editer", edit_program_path(program) %></td>
       <td><%= link_to "Supprimer", program, :confirm => 'Are you sure?', :method => :delete %></td>

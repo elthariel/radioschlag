@@ -1,7 +1,7 @@
 <% title "Programme" %>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nom du programme:</strong>
   <%=h @program.name %>
 </p>
 <p>
@@ -9,11 +9,23 @@
   <%=h @program.desc %>
 </p>
 <p>
+  <strong>Playlist assignee a ce programme:</strong>
+  <%=h @program.playlist.name %>
+</p>
+<p>
   <strong>Contributeurs:</strong>
   <% for u in @program.users %>
     <%=h u.username %> |
   <% end %>
 </p>
+
+<p>
+  <strong>Programmation:</strong>
+  <% for slot in @program.slots %>
+    <%=h slot.name %> |
+  <% end %>
+</p>
+
 
 
 <p>

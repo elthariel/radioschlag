@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091217002301) do
+ActiveRecord::Schema.define(:version => 20100709160552) do
 
   create_table "audio_file_assignments", :force => true do |t|
     t.integer  "playlist_id"
@@ -61,13 +61,6 @@ ActiveRecord::Schema.define(:version => 20091217002301) do
     t.integer  "user_id"
   end
 
-  create_table "playlist_assignments", :id => false, :force => true do |t|
-    t.integer "program_id"
-    t.integer "playlist_id"
-    t.integer "priority"
-    t.integer "probability"
-  end
-
   create_table "playlist_players", :force => true do |t|
     t.string "name"
     t.text   "desc"
@@ -98,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20091217002301) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "playlist_id", :default => 1, :null => false
   end
 
   create_table "role_assignments", :id => false, :force => true do |t|

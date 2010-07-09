@@ -132,7 +132,7 @@ class Scheduler
   def get_playlist_from_slot(slot)
     # FIXME Implement something better than just picking the first playlist
     begin
-      slot.program.playlists.first
+      slot.program.playlist
     rescue
       default_playlist
     end

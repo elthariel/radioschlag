@@ -1,5 +1,5 @@
 class Playlist < ActiveRecord::Base
-  has_many :playlist_assignments
+  has_many :programs
   has_many :programs, :through => :playlist_assignments
   has_many :audio_file_assignments, :order => 'position'
   has_many :audio_files, :through => :audio_file_assignments

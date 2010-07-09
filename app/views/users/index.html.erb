@@ -4,6 +4,7 @@
   <tr>
     <th>Utilisateur</th>
     <th>Roles</th>
+    <th>Mail</th>
     <th>Profile</th>
   </tr>
   <% for user in @users %>
@@ -14,6 +15,7 @@
           <%=h role.name %>
         <% end %>
       </td>
+      <td><%=h user.email %></td>
       <td><%= link_to "Edition", edit_user_path(user) %></td>
     </tr>
   <% end %>
