@@ -54,6 +54,28 @@ class AudioFilesController < ApplicationController
     redirect_to audio_files_url
   end
 
+  def show
+    @audio_file = AudioFile.find(params[:id])
+
+    # FIXME hardwired path ... :(
+    if @audio_file.in_ftp?
+      path = @audio_file.path.gsub(RADIO_CONFIG[:ftp_root], RADIO_CONFIG[:ftp_root_pub])
+    elsif @audio_file.in_audio?
+      path = @audio_file.path.gsub(RADIO_CONFIG[:audio_root], RADIO_CONFIG[:audio_root_pub])
+    else
+      render :nothing => true, :status => 404
+      return
+    end
+
+    options = {}
+    options[:length] = File.size @audio_file.path
+    options[:filename] = File.basename @audio_file.path   
+    response.headers['X-Accel-Redirect'] = path
+    send_file_headers! options
+
+    render :nothing => true
+  end
+
   protected
   def index_conditions(params)
     cond = {}

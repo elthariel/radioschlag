@@ -51,10 +51,13 @@ authorization do
   role :contributeur do
     includes :guest
 
+
     # Fichier audios
     has_permission_on :audio_files, :to => [:manage, :mass_update] do
       if_attribute :user => is {user}
     end
+
+    has_permission_on :audio_files, :to => :show
 
     # Les contribs peuvent voir leur quota
     has_permission_on :ftp_accounts, :to => :read do
@@ -89,8 +92,8 @@ authorization do
   end
 
   role :guest do
-    has_permission_on :audio_files, :to => :read
-    has_permission_on :playlists, :to => [:read, :create]
+    has_permission_on :audio_files, :to => :index
+    has_permission_on :playlists, :to => :read
     has_permission_on :role_assignment, :to => :read
     has_permission_on :users, :to => :create
     has_permission_on :users, :to => :update do

@@ -7,18 +7,8 @@ module AudioFilesHelper
   end
 
   def audio_tag(file, minimalist = false)
-    if file.path.index RADIO_CONFIG[:audio_root]
-      folder = RADIO_CONFIG[:audio_root].split('/')[-1]
-      fpath = file.path.sub(RADIO_CONFIG[:audio_root], '')
-    elsif file.path.index RADIO_CONFIG[:ftp_root]
-      folder = RADIO_CONFIG[:ftp_root].split('/')[-1]
-      fpath = file.path.sub(RADIO_CONFIG[:ftp_root], '')
-    else
-      return 'Not playable'
-    end
+    url = url_for file
 
-    url = RADIO_CONFIG[:http_listen]
-    url += '/' + folder + fpath
     tag = "<audio src=\"#{url}\" controls=\"true\" preload=none>"
     tag += "Your browser does not support the audio element. "
     tag += "Install a recent Firefox or Chromium version"

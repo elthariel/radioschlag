@@ -13,4 +13,12 @@ class AudioFile < ActiveRecord::Base
   def belong_to_an_user
     errors.add("This file doesn't belong to an user") unless User.exists?(user_id)
   end
+
+  def in_ftp?
+    path.index RADIO_CONFIG[:ftp_root]
+  end
+  
+  def in_audio?
+    path.index RADIO_CONFIG[:audio_root]
+  end
 end

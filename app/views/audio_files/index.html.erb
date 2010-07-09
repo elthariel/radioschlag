@@ -38,7 +38,9 @@
       <td><%= h audio_file.metric %></td>
       <td><%= link_to "Edition", edit_audio_file_path(audio_file) %></td>
       <td><%= link_to "Supprimer", audio_file, :confirm => 'Etes vous surs de vouloir supprimer ce fichier ?', :method => :delete %></td>
-      <td><%= audio_tag audio_file %></td>
+      <% permitted_to? :show, :audio_files do %>
+        <td><%= audio_tag audio_file %></td>
+      <% end %>
     </tr>
     <%= draggable_element("audio_file_#{audio_file.id}", :ghosting => true,
                           :revert => true) %>
