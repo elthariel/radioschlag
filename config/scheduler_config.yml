@@ -3,24 +3,31 @@ development:
   liq_socket: ./radio.sock
   liq_queue: rq
   liq_live: live
+  liq_jingle: jingles
   audiofile_metric_increment: 0.3
   logfile: log/scheduler_dev.log
   loglevel: DEBUG
+  jingle_interval: 60
 
 test:
   playlist_lookahead: 10
   liq_socket: ./radio.sock
   liq_queue: rq
   liq_live: live
+  liq_jingle: jingles
   audiofile_metric_increment: 0.3
   logfile: log/scheduler_test.log
   loglevel: DEBUG
+  jingle_interval: 60
 
 production:
   playlist_lookahead: 10
   liq_socket: ./radio.sock
   liq_queue: rq
   liq_live: live
+  liq_jingle: jingles
   audiofile_metric_increment: 0.3
   logfile: log/scheduler_prod.log
   loglevel: DEBUG
+  jingle_interval: 60
+

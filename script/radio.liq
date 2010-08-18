@@ -22,8 +22,8 @@ end
 def my_crossfade(x, a, b)
     add(normalize=false,
         [sequence([blank(duration=x),
-                   fade.initial(duration=x * 2., b)]),
-         fade.final(duration=x * 2., a) ])
+                   fade.initial(duration=x, b)]),
+         fade.final(duration=x * 1.5, a) ])
 end
 
 
@@ -32,10 +32,10 @@ hinput = input.harbor(id = "live",
                       "live")
 
 radio = fallback(track_sensitive = false,
-                 transitions = [my_crossfade(0.75), my_crossfade(0.75)],
+                 transitions = [my_crossfade(1.), my_crossfade(1.), my_crossfade(1.)],
                  [hinput,
                   request.equeue(id = "jingles"),
-                  request.equeue(id = "rq"),
+                  skip_blank(request.equeue(id = "rq")),
                   blank()])
 
 # Stream it out

@@ -44,6 +44,7 @@ end
 class Scheduler
   def initialize(liq)
     @liq = liq
+    @last_jingle = Timer.now
     @playlist_factory = PlaylistFactory.new
 
     # The next playlist at the construction is the playlist that should be played now.
@@ -56,6 +57,7 @@ class Scheduler
   def tick
     manage_playlist_generation
     manage_playlist_feeding
+    manage_jingle
     manage_live
 
     # Return true or else or callback won't be called again
@@ -83,7 +85,6 @@ class Scheduler
     # Timer.now is in the current week and next.slot is for the next
     # week (diff <= 0)
     diff = @next.slot.start - Timer.now
-    puts "diff: #{diff}"
     normal = (@next.slot.start != 0 and diff >= 0 and diff <= SCHEDULER_CONFIG[:playlist_lookahead])
 
     #debugger
@@ -97,7 +98,7 @@ class Scheduler
       overrun = generate_playlist(@next)
       @next = next_task(overrun)
     else
-      $log.debug "Not generating playlist"
+      # $log.debug "Not generating playlist"
     end
   end
 
@@ -106,7 +107,20 @@ class Scheduler
     # and because it's funny) client connected to harbor live input.
     if Timer.now == @next.slot.start - 1 or Timer.now == @next.slot.start - 2
       $log.info "Scheduler: Kick harbor live source"
-      @liq.send(SCHEDULER_CONFIG[:liq_live]).kick
+      @liq.send(SCHEDULER_CONFIG[:liq_live].to_s).kick
+    end
+  end
+
+  def manage_jingle
+    $log.info
+    if Timer.now - @last_jingle >= SCHEDULER_CONFIG[:jingle_interval]
+      jingles = AudioFile.all(:conditions => ["audio_file_type_id = ?", AudioFileType.find_by_name('jingle').id])
+      if jingles.length > 0
+        id = rand(jingles.length)
+        $log.info "Scheduler: Requested the playback of a jingle #{jingles[id].path}"
+        puts @liq.send(SCHEDULER_CONFIG[:liq_jingle].to_s).push jingles[id].path
+        @last_jingle = Timer.now
+      end
     end
   end
 
