@@ -1,6 +1,7 @@
 #! /usr/bin/env liquidsoap
 
 %include "config/config.liq"
+#%include "utils.liq"
 
 
 def liveauth(login, password) =
@@ -18,39 +19,24 @@ def liveauth(login, password) =
   bool_of_string(ret)
 end
 
+def my_crossfade(x, a, b)
+    add(normalize=false,
+        [sequence([blank(duration=x),
+                   fade.initial(duration=x * 2., b)]),
+         fade.final(duration=x * 2., a) ])
+end
+
 
 hinput = input.harbor(id = "live",
                       auth = liveauth,
                       "live")
 
 radio = fallback(track_sensitive = false,
+                 transitions = [my_crossfade(0.75), my_crossfade(0.75)],
                  [hinput,
+                  request.equeue(id = "jingles"),
                   request.equeue(id = "rq"),
-                  saw()])
+                  blank()])
 
 # Stream it out
-output.icecast.vorbis(
-  host = stream_host,
-  port = stream_port,
-  user = src_login_ogg,
-  password = src_passwd,
-  mount = "radio-schlag.ogg",
-  genre = "FreeTekno",
-  description = "Radio Schlag | FreeTekno Culture",
-  url="http://radio.schlag.fr",
-  quality = 3.,
-  radio)
-
-# Mp3 output for mac and flash player :( and for android player :)
-output.icecast.lame(
-   host = stream_host,
-   port = stream_port,
-   user = src_login_mp3,
-   password = src_passwd,
-   mount = "radio-schlag.mp3",
-   genre = "FreeTekno",
-   description = "Radio Schlag | FreeTekno Culture",
-   url="http://radio.schlag.fr",
-   bitrate = 96,
-   radio)
-
+%include "config/outputs.liq"
