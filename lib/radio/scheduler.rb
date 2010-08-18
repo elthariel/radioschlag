@@ -25,14 +25,19 @@
 
 require 'radio/playlist'
 
+require 'ruby-debug'
+
 module Radio
 
 # A schedulable element, aka slot + playlist
 class Task
-  attr_reader :slot, :playlist
-  def initialize(slot, pls)
+  attr_reader :slot, :playlist, :overrun
+  def initialize(slot, pls, overrun)
     @slot = slot
     @playlist = pls
+    # The overrun of the last playlist. This is to be subtracted from
+    # the total length of the playlist to be generated (in minutes)
+    @overrun = overrun
   end
 end
 
@@ -44,7 +49,8 @@ class Scheduler
     # The next playlist at the construction is the playlist that should be played now.
     now = Timer.now
     slot = ::Slot.find(:first, :conditions => ['slots.start <= ? AND slots.end > ?', now, now])
-    @next = Task.new(slot, get_playlist_from_slot(slot))
+    @next = Task.new(slot, get_playlist_from_slot(slot), 0)
+    manage_playlist_generation(true)
   end
 
   def tick
@@ -69,12 +75,29 @@ class Scheduler
     end
   end
 
-  def manage_playlist_generation
-    if (@next.slot.start == 0 and 10080 - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]) or @next.slot.start - Timer.now <= SCHEDULER_CONFIG[:playlist_lookahead]
+  def time_to_generate_playlist?
+    # A special case when we are wrapping around the week
+    week_wrap = (@next.slot.start == 0 and (10080 - Timer.now) <= SCHEDULER_CONFIG[:playlist_lookahead])
+
+    # The normal case, we are just taking care of week wrapping, when
+    # Timer.now is in the current week and next.slot is for the next
+    # week (diff <= 0)
+    diff = @next.slot.start - Timer.now
+    puts "diff: #{diff}"
+    normal = (@next.slot.start != 0 and diff >= 0 and diff <= SCHEDULER_CONFIG[:playlist_lookahead])
+
+    #debugger
+
+    week_wrap or normal
+  end
+
+  def manage_playlist_generation(first = false)
+    if time_to_generate_playlist? or first
       $log.info "Scheduler: Generating a new playlist, for slot #{@next.slot.name}"
-      @current_playlist = generate_playlist(@next)
-      $log.info "Scheduler: The effective length of the playlist is #{@current_playlist.length / 60.0} minutes"
-      @next = next_task
+      overrun = generate_playlist(@next)
+      @next = next_task(overrun)
+    else
+      $log.debug "Not generating playlist"
     end
   end
 
@@ -88,12 +111,15 @@ class Scheduler
   end
 
   def generate_playlist(task)
-    length = @next.slot.end - @next.slot.start
+    length = @next.slot.end - @next.slot.start - @next.overrun
     if Timer.now > @next.slot.start and Timer.now < @next.slot.end
       length -= Timer.now - @next.slot.start
     end
-    $log.info "Scheduler: New playlist is #{length} minutes long"
-    @playlist_factory.make(@next.playlist, length * 60)
+
+    @current_playlist = @playlist_factory.make(@next.playlist, length * 60)
+    overrun = @current_playlist.length / 60.0 - length
+    $log.info "Scheduler: Generated playlist: asked #{length} minutes got #{@current_playlist.length / 60.0} (i.e. #{overrun} minute(s) of overrun)"
+    overrun
   end
 
   def output_playlist(pls)
@@ -120,12 +146,12 @@ class Scheduler
 
 
 
-  def next_task
+  def next_task(overrun)
     # 10080 minutes is the length in minutes of a week
     # We are wrapping the end of the week here.
     slot = ::Slot.first(:conditions => {:start => @next.slot.end % 10080})
     pls = get_playlist_from_slot(slot)
-    Task.new(slot, pls)
+    Task.new(slot, pls, overrun)
   end
 
   protected
