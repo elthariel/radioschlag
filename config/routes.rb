@@ -14,6 +14,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
+  map.resources :password_resets
+
   map.resources :incoming_audio_files
 
   map.resources :audio_files

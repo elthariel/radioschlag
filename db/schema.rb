@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100709160552) do
+ActiveRecord::Schema.define(:version => 20100818233359) do
 
   create_table "audio_file_assignments", :force => true do |t|
     t.integer  "playlist_id"
@@ -135,6 +135,9 @@ ActiveRecord::Schema.define(:version => 20100709160552) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "ftp_account_id",    :default => 0
+    t.string   "perishable_token",  :default => "", :null => false
   end
+
+  add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
 
 end

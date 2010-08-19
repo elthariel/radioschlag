@@ -112,14 +112,14 @@ class Scheduler
   end
 
   def manage_jingle
-    $log.info
     if Timer.now - @last_jingle >= SCHEDULER_CONFIG[:jingle_interval]
       jingles = AudioFile.all(:conditions => ["audio_file_type_id = ?", AudioFileType.find_by_name('jingle').id])
       if jingles.length > 0
         id = rand(jingles.length)
         $log.info "Scheduler: Requested the playback of a jingle #{jingles[id].path}"
-        puts @liq.send(SCHEDULER_CONFIG[:liq_jingle].to_s).push jingles[id].path
+        @liq.send(SCHEDULER_CONFIG[:liq_jingle].to_s).push jingles[id].path
         @last_jingle = Timer.now
+        # FIXME Update jingle metric when playing it and take care of it when choosing jingle
       end
     end
   end
