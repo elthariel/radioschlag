@@ -24,7 +24,7 @@
 ##
 
 class UserNotifier < ActionMailer::Base
-  default_url_options[:host] = 'radio.schlag.fr/community'
+  default_url_options[:host] = 'radio.schlag.fr'
 
   def password_reset_instructions(user)
     subject       "#{root_url} Password Reset Instructions"
