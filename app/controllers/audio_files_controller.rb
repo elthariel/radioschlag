@@ -69,7 +69,9 @@ class AudioFilesController < ApplicationController
 
     options = {}
     options[:length] = File.size @audio_file.path
-    options[:filename] = File.basename @audio_file.path   
+    options[:filename] = File.basename @audio_file.path
+    options[:type] = 'audio/ogg'
+    response.headers['X-Content-Duration'] = @audio_file.duration.to_f.to_s
     response.headers['X-Accel-Redirect'] = path
     send_file_headers! options
 
