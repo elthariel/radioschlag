@@ -38,6 +38,28 @@ module Sox
       end
     end
 
+    def self.parse_vorbis_comments(path, verbose = false)
+      puts "-> Executing 'soxi -a \"#{path}\"'" if verbose
+      vc_out = `soxi -a "#{path}"`
+      puts "-> Got vorbiscomment out:" if verbose
+      comments = {}
+
+      puts vc_out if verbose
+
+      vc_out.each do |line|
+        s = line.split '='
+        s[0].downcase!
+        s[1].gsub!(/[;&'"$%^|]*!~#/, '')
+        s[1].chomp!
+        if comments.has_key? s[0]
+          comments[s[0]] += ', ' + s[1]
+        else
+          comments[s[0]] = s[1]
+        end
+      end
+      comments
+    end
+
     protected
     def initialize(path)
       @infos = Hash.new
@@ -57,13 +79,14 @@ module Sox
       @infos[:chans] = `soxi -c "#{@infos[:path]}"`.chomp.to_i
       @infos[:duration] = `soxi -D "#{@infos[:path]}"`.chomp.to_i
       @infos[:bitrate] = `soxi -B "#{@infos[:path]}"`.chomp.to_i
+      @infos[:comments] = self.parse_vorbis_comments(path)
 
-      `soxi -a "#{@infos[:path]}"`.each_line do |l|
-        duple = l.split('=')
-        if duple[0] and duple[1]
-          @infos[duple[0].downcase] = duple[1].chomp
-        end
-      end
+      # `soxi -a "#{@infos[:path]}"`.each_line do |l|
+      #   duple = l.split('=')
+      #   if duple[0] and duple[1]
+      #     @infos[duple[0].downcase] = duple[1].chomp
+      #   end
+      # end
 
     end
 

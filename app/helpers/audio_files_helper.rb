@@ -9,10 +9,12 @@ module AudioFilesHelper
   def audio_tag(file, minimalist = false)
     url = url_for file
 
-    tag = "<audio src=\"#{url}\" controls=\"true\" preload=none>"
+    tag = "<div class=\"af_player_box\">"
+    tag += "<audio src=\"#{url}\" controls=\"true\" preload=none class=\"af_player\">"
     tag += "Your browser does not support the audio element. "
     tag += "Install a recent Firefox or Chromium version"
     tag += " </audio>"
+    tag += "</div>"
     tag
   end
 end

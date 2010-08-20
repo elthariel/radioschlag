@@ -70,10 +70,18 @@ while (42)
         `mv "#{file.path}.tmp.ogg" "#{new_path}"`
       end
 
+      title = ""
+      artist = ""
+      album = ""
+      title = infos.infos[:comments]['title'] if infos.infos[:comments].has_key? 'title'
+      artist = infos.infos[:comments]['artist'] if infos.infos[:comments].has_key? 'artist'
+      album = infos.infos[:comments]['album'] if infos.infos[:comments].has_key? 'album'
+
       AudioFile.create(:path => new_path, :duration => infos.infos[:duration],
                        :audio_file_style_id => file.audio_file_style_id,
                        :audio_file_type_id => file.audio_file_type_id,
-                       :metric => 1.0, :user_id => file.user_id)
+                       :metric => 1.0, :user_id => file.user_id,
+                       :title => title, :artist => artist, :album => album)
 
     else
       $log.warn "File doesn't seems to be an audio file: #{file.path}"

@@ -1,137 +1,211 @@
 body {
-  background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
+    background-color: #4B7399;
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 14px;
 }
 
 a img {
-  border: none;
+    border: none;
 }
 
 a {
-  color: #0000FF;
+    color: #0000FF;
 }
 
 .clear {
-  clear: both;
-  height: 0;
-  overflow: hidden;
+    clear: both;
+    height: 0;
+    overflow: hidden;
 }
 
 #container {
-  width: 70%;
-  position: absolute;
-  left: 20%;
-  margin: 0 auto;
-  background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
+    width: 70%;
+    position: absolute;
+    left: 20%;
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 20px 40px;
+    border: solid 1px black;
+    margin-top: 20px;
 }
 
 #flash_notice, #flash_error {
-  padding: 5px 8px;
-  margin: 10px 0;
+    padding: 5px 8px;
+    margin: 10px 0;
 }
 
 #flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
+    background-color: #CFC;
+    border: solid 1px #6C6;
 }
 
 #flash_error {
-  background-color: #FCC;
-  border: solid 1px #C66;
+    background-color: #FCC;
+    border: solid 1px #C66;
 }
 
 .fieldWithErrors {
-  display: inline;
+    display: inline;
 }
 
 #errorExplanation {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+    width: 400px;
+    border: 2px solid #CF0000;
+    padding: 0px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
 }
 
 #errorExplanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
-  color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: 0;
+    background-color: #c00;
+    color: #fff;
 }
 
 #errorExplanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 8px;
+    color: #333;
+    margin-bottom: 0;
+    padding: 8px;
 }
 
 #errorExplanation ul {
-  margin: 2px 24px;
+    margin: 2px 24px;
 }
 
 #errorExplanation ul li {
-  font-size: 12px;
-  list-style: disc;
+    font-size: 12px;
+    list-style: disc;
 }
 
 #user_nav {
-  float: right;
-  font-size: 12px;
-  background-color: #eee;
-  border: solid 1px #aaa;
-  padding: 3px;
+    float: right;
+    font-size: 12px;
+    background-color: #eee;
+    border: solid 1px #aaa;
+    padding: 3px;
 }
 
 #nav {
-  position: fixed;
-  width: 16%;
-  margin-right: 10px;
-  margin-top: 10px;
-  padding-right: 15px;
+    position: fixed;
+    width: 16%;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-right: 15px;
 }
 
 #main_nav {
-  font-size: 12px;
-  background-color: #eee;
-  border: solid 1px #000;
-  margin-right: 10px;
-  margin-top: 10px;
-  padding-right: 15px;
+    font-size: 12px;
+    background-color: #eee;
+    border: solid 1px #000;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-right: 15px;
 }
 
 .nav_group {
-  font-size: 12px;
-  margin-right: 10px;
-  margin-top: 10px;
-  padding-right: 15px;
-  background-color: #eee;
-  border: solid 1px #000;
+    font-size: 12px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-right: 15px;
+    background-color: #eee;
+    border: solid 1px #000;
 }
 
 .nav_item {
-  font-size: 12px;
-  margin-right: 1px;
-  margin-top: 1px;
-  padding-right: 1px;
-  background-color: #eef;
-  border: solid 1px #aaa;
+    font-size: 12px;
+    margin-right: 1px;
+    margin-top: 1px;
+    padding-right: 1px;
+    background-color: #eef;
+    border: solid 1px #aaa;
 }
 
 #main {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 .handle {
-  font-size: 12px;
-  cursor: move;
-  color: #777
+    font-size: 12px;
+    cursor: move;
+    color: #777;
+}
+
+/******************************
+ * Audio Files index
+ */
+
+.af_box {
+    position: relative;
+    background-color: #ced5f8;
+    border: solid 1px #5562a2;
+    margin: 5px;
+    padding: 5px;
+    height: 65px;
+}
+
+.af_owner {
+    position: absolute;
+    top: 6px;
+    left: 30px;
+}
+
+.af_infos {
+    position: absolute;
+    width: 15%;
+    text-align:right;
+    top: 6px;
+    left: 84%;
+}
+
+.af_name {
+    position: absolute;
+    width: 75%;
+    top: 6px;
+    left: 20%;
+}
+
+.af_meta {
+    position: absolute;
+    width: 75%;
+    top: 23px;
+    left: 20%;
+}
+
+.af_action {
+    position: absolute;
+    width: 35%;
+    top: 53px;
+    left: 6px;
+}
+
+.af_handle {
+    position: absolute;
+    top: 30px;
+    left: 6px;
+}
+
+.af_preview {
+    position: absolute;
+    top: 30px;
+    left: 62px;
+    font-size: 12px;
+    color: #777;
+}
+
+.af_player {
+    width: 100%;
+    height: 30px;
+}
+
+.af_player_box {
+    padding: 3px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
 }
 

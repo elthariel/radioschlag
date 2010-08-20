@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100818233359) do
+ActiveRecord::Schema.define(:version => 20100819162252) do
 
   create_table "audio_file_assignments", :force => true do |t|
     t.integer  "playlist_id"
@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(:version => 20100818233359) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "title",               :default => "", :null => false
+    t.string   "artist",              :default => "", :null => false
+    t.string   "album",               :default => "", :null => false
   end
 
   create_table "ftp_accounts", :force => true do |t|

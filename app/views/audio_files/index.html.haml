@@ -1,0 +1,63 @@
+- title "Fichiers sons"
+
+%p
+  - form_for :audio_files, :url => audio_files_path, :html => {:method => :get} do |form|
+    = collection_select(:user, :username, User.all(:order => 'username'),
+      :username, :username, {:include_blank => 'user'})
+    = collection_select(:audio_file_type, :id, AudioFileType.all(:order => 'name'),
+      :id, :name, {:include_blank => 'type'})
+    = collection_select(:audio_file_style, :id, AudioFileStyle.all(:order => 'name'),
+      :id, :name, {:include_blank => 'style'})
+    = submit_tag 'Appliquer'
+
+%p= will_paginate @audio_file
+
+#audio_files
+  - form_tag mass_update_audio_files_path, :method => :put do
+    - for audio_file in @audio_files do
+      .af_box{:id => "audio_file_#{audio_file.id}"}
+        .af_check_box= check_box_tag "audio_files_ids[]", audio_file.id, false, :class => 'audio_file_checkbox'
+        %span.af_handle.handle [poignee]
+        .af_owner= h audio_file.user.username
+        .af_name= audiofile_pretty_printer audio_file
+        .af_infos
+          .af_type= h audio_file.audio_file_type.name
+          .af_style= h audio_file.audio_file_style.name
+          .af_length= h seconds_to_string(audio_file.duration)
+          .af_metric= h audio_file.metric
+        .af_action
+          %span.af_edit= link_to "Edition", edit_audio_file_path(audio_file)
+          %span.af_delete= link_to "Supprimer", audio_file,
+            :confirm => 'Etes vous surs de vouloir supprimer ce fichier ?',
+            :method => :delete
+        .af_meta
+          .af_artist
+            %strong Artist:
+            = h audio_file.artist
+          .af_album
+            %strong Album:
+            = h audio_file.album
+          .af_title
+            %strong Title:
+            = h audio_file.title
+        .af_preview
+          - permitted_to? :show, :audio_files do
+            = link_to_function "[Preview]" do |page|
+              - page["audio_file_player_#{audio_file.id}"].toggle
+      - permitted_to? :show, :audio_files do
+        .af_player_box{:id => "audio_file_player_#{audio_file.id}", :style => "display:none"}
+          %audio.af_player{:url => url_for(audio_file), :controls => "true", :preload => "none"}
+            Your browser doesn't support the audio tag. Please install and recent(decent?) version of Firefox or Chrome
+
+        = draggable_element("audio_file_#{audio_file.id}", :revert => true, :handle => "'handle'")
+
+= link_to_function 'Tous', "$$('input.audio_file_checkbox').each(function(checkbox) { checkbox.checked = true; });"
+|#|
+= link_to_function 'Aucun', "$$('input.audio_file_checkbox').each(function(checkbox) { checkbox.checked = false; });"
+
+%p
+  = collection_select(:audio_file_type, :id, AudioFileType.all(:order => 'name'), :id, :name, {:include_blank => 'type'})
+  = collection_select(:audio_file_style, :id, AudioFileStyle.all(:order => 'name'), :id, :name, {:include_blank => 'style'})
+  = submit_tag 'Appliquer'
+
+
