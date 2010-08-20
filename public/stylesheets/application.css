@@ -125,6 +125,11 @@ a {
     border: solid 1px #aaa;
 }
 
+.drop_hover {
+    background-color: #99f;
+    border: dashed 1px #000;
+}
+
 #main {
     background-color: #eee;
 }

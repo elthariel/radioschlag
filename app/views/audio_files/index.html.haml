@@ -49,7 +49,7 @@
           %audio.af_player{:src => url_for(audio_file), :controls => "true", :preload => "none"}
             Your browser doesn't support the audio tag. Please install and recent(decent?) version of Firefox or Chrome
 
-        = draggable_element("audio_file_#{audio_file.id}", :revert => true, :handle => "'handle'")
+        = draggable_element("audio_file_#{audio_file.id}", :ghosting => true, :revert => true, :handle => "'handle'")
 
 = link_to_function 'Tous', "$$('input.audio_file_checkbox').each(function(checkbox) { checkbox.checked = true; });"
 |#|

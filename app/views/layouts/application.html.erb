@@ -41,7 +41,7 @@
           <% for p in current_user.playlists %>
           <li class="nav_item" id="playlist_<%=p.id%>"><%= link_to p.name, playlist_path(p) %></li>
           <% if p.playlist_type.name == 'audiofile' %>
-          <%= drop_receiving_element("playlist_#{p.id}",
+          <%= drop_receiving_element("playlist_#{p.id}", :hoverclass => "drop_hover",
               :url => {:controller => 'playlists', :action => 'add_file', :playlist_id => p.id}) %>
           <% end %>
           <% end %>
