@@ -21,4 +21,13 @@ module ApplicationHelper
                     :audio_file_type_id => 1, :user_id => current_user.id}).length
     end
   end
+
+  def rjs_flash(page, flash)
+    page.replace_html :flash_container, ""
+    flash.each do |name, msg|
+      page.insert_html :bottom, :flash_container, content_tag(:div, msg, :id => "flash_#{name}")
+    end
+    flash.discard
+  end
+
 end

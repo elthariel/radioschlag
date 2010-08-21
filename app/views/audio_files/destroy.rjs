@@ -1,0 +1,3 @@
+page["audio_file_#{@audio_file.id}"].remove
+rjs_flash(page, flash)
+

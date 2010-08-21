@@ -45,19 +45,21 @@ class AudioFilesController < ApplicationController
     @audio_file = AudioFile.find(params[:id])
     if File.writable?(@audio_file.path)
       #FIXME security
-      `rm "#{@audio_file.path}"`
+      path = @audio_file.path.gsub(/;|&/, '').gsub('..','')
+      `rm "#{path}"`
       @audio_file.destroy
       flash[:notice] = "Fichier supprime"
     else
-      flash[:error] = "Impossible de supprimer le fichier"
+    flash[:error] = "Impossible de supprimer le fichier"
     end
-    redirect_to audio_files_url
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show
     @audio_file = AudioFile.find(params[:id])
 
-    # FIXME hardwired path ... :(
     if @audio_file.in_ftp?
       path = @audio_file.path.gsub(RADIO_CONFIG[:ftp_root], RADIO_CONFIG[:ftp_root_pub])
     elsif @audio_file.in_audio?
