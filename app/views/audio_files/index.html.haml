@@ -46,8 +46,8 @@
               - page["audio_file_player_#{audio_file.id}"].toggle
       - permitted_to? :show, :audio_files do
         .af_player_box{:id => "audio_file_player_#{audio_file.id}", :style => "display:none"}
-          -# %audio.af_player{:src => url_for(audio_file), :controls => "true", :preload => "none"}
-          -#   Your browser doesn't support the audio tag. Please install a recent version of Firefox
+          %audio.af_player{:src => url_for(audio_file), :controls => "true", :preload => "none"}
+            Your browser doesn't support the audio tag. Please install a recent version of Firefox
 
         = draggable_element("audio_file_#{audio_file.id}", :ghosting => true, :revert => true, :handle => "'handle'")
 
